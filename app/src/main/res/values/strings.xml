@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">IOTUNAC</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="afirma">"Si usted contestó "NO" honestamente a todas las preguntas, entonces puede estar razonablemente seguro que puede comenzar a ser más activo físicamente, pero con un enfoque lento y que se progrese gradualmente.\n"
+        "Esta es la manera más segura y fácil."</string>
+    <string name="title_activity_test">Test</string>
+    <string name="Questions">"Si usted tiene entre 15 y 69 años de edad, el cuestionario PAR-Q le indicará si necesita consultar a su médico antes de iniciar un programa de ejercicio o actividad física.\n"</string>
+    <string name="datosaggre">"¿Deseraría autorizarnos para almacenar sus datos para generar estadísticas y participar en posibles estudios? \n"
+    "Los datos personales no serán compartidos, solo datos genéricos para efectos de estudios.\n"</string>
+    <string name="large_text">
+                  "Bienvenido a Calidad del aire.\n\n"
+        "
+        "Por regulaciones de ley es importante para usted y nosotros que lea, entienda y conteste de manera sincera las siguientes preguntas."
+        "Entienda que si alguna de las siguientes siete respuestas es afirmativa, no podrás hacer uso de los programas de ejercicios acá propuestos.\n"
+        "agradecemos nos entienda y nos disculpen\n"
+        " "
+         "Att: Dirección de proyecto"
+    </string>
+    <string name="not_log_in">Autenticación fallida</string>
+    <string name="action_settings">Settings</string>
+</resources>
