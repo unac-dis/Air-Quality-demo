@@ -10,6 +10,24 @@
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Welcome,'acá va el Menú supongo :p'"
+    android:text="Welcome'"
     android:textSize="25dp"/>
+    <Button
+        android:id="@+id/Gradia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Gráfico Diario"/>
+    <Button
+        android:id="@+id/Grames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Gráfico mensual"/>
+    <Button
+        android:id="@+id/Grasemana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Gráfico Semanal"/>
 </LinearLayout>

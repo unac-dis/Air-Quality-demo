@@ -18,6 +18,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.view.Graficodiario;
 import co.edu.unac.iotunac.view.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
