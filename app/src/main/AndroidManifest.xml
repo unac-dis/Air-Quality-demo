@@ -35,7 +35,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".view.Graficosemanal"></activity>
+        <activity android:name=".view.Graficosemanal" />
+        <activity android:name=".view.Graficomensual"></activity>
     </application>
 
 </manifest>
