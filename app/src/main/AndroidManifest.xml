@@ -36,7 +36,8 @@
         </service>
 
         <activity android:name=".view.Graficosemanal" />
-        <activity android:name=".view.Graficomensual"></activity>
+        <activity android:name=".view.Graficomensual" />
+        <activity android:name=".view.Graficodiario"></activity>
     </application>
 
 </manifest>
