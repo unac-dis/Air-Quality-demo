@@ -37,7 +37,8 @@
 
         <activity android:name=".view.Graficosemanal" />
         <activity android:name=".view.Graficomensual" />
-        <activity android:name=".view.Graficodiario"></activity>
+        <activity android:name=".view.Graficodiario" />
+        <activity android:name=".view.Calendario"></activity>
     </application>
 
 </manifest>
