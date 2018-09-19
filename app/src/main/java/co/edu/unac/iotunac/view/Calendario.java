@@ -15,7 +15,6 @@ import co.edu.unac.iotunac.R;
 public class Calendario extends AppCompatActivity {
 
     CalendarView calendarView;
-    TextView myDate;
     ImageView imageView;
 
     @Override
@@ -24,7 +23,6 @@ public class Calendario extends AppCompatActivity {
         setContentView(R.layout.activity_calendario);
 
         calendarView = findViewById(R.id.calendarView);
-        myDate = findViewById(R.id.myDate);
         imageView = findViewById(R.id.imageView);
 
         calendarView.setFirstDayOfWeek(1);
@@ -52,7 +50,6 @@ public class Calendario extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = (month + 1) + "/" + dayOfMonth + "/" + year;
-                myDate.setText(date);
                 if(dayOfMonth == 31 || dayOfMonth == 30) {
                     Intent intent = new Intent(Calendario.this, Graficomensual.class);
                     startActivity(intent);
