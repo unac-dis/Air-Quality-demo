@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+        android:id="@+id/ageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:hint="Edad"
+        android:inputType="numberSigned"
+        android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/heighText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="Estatura (En metros)"
+            android:inputType="numberSigned"
+            android:textSize="22sp" />
+        <EditText
+            android:id="@+id/weightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Peso (Kg)"
+            android:inputType="numberDecimal"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/calculateIMC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcular IMC" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColor="#009617"
+            android:textSize="22sp" />
+</LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
