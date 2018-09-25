@@ -7,9 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import co.edu.unac.iotunac.R;
+
 public class CalcularIMC extends AppCompatActivity {
 
-    EditText ageText,heightText,weightText;
+    EditText ageText,heighText,weightText;
     private TextView resultText;
 
     @Override
@@ -18,7 +20,7 @@ public class CalcularIMC extends AppCompatActivity {
         setContentView(R.layout.calculate_imc);
 
         ageText = (EditText) findViewById(R.id.ageText);
-        heightText = (EditText) findViewById(R.id.heightText);
+        heighText = (EditText) findViewById(R.id.heighText);
         weightText = (EditText) findViewById(R.id.weightText);
         resultText = (TextView) findViewById(R.id.resultText);
         Button calculateIMC = (Button) findViewById(R.id.calculateIMC);
@@ -27,7 +29,7 @@ public class CalcularIMC extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                float n1 = Float.parseFloat(heightText.getText().toString());
+                float n1 = Float.parseFloat(heighText.getText().toString());
                 float n2 = Float.parseFloat(weightText.getText().toString());
                 float imc = n2/(n1*n1);
                 resultText.setText(String.valueOf(imc));
