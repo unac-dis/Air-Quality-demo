@@ -38,7 +38,8 @@
         <activity android:name=".view.Graficosemanal" />
         <activity android:name=".view.Graficomensual" />
         <activity android:name=".view.Graficodiario" />
-        <activity android:name=".view.Calendario"></activity>
+        <activity android:name=".view.Calendario" />
+        <activity android:name=".view.Estadodelclima"></activity>
     </application>
 
 </manifest>
