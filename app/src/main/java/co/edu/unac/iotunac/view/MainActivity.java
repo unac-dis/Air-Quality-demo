@@ -9,7 +9,7 @@ import android.widget.Button;
 import co.edu.unac.iotunac.R;
 
 public class MainActivity extends AppCompatActivity {
-    Button btndia, btnmes, btnsemana;
+    Button btndia, btnmes, btnsemana, calcular;
     @Override
 
 
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         btndia = (Button)findViewById(R.id.Gradia);
         btnmes = (Button)findViewById(R.id.Grames);
         btnsemana = (Button)findViewById(R.id.Grasemana);
+        calcular = findViewById(R.id.imc);
         btndia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent pasar = (new Intent(MainActivity.this, Graficomensual.class));
                 startActivity(pasar);
+            }
+        });
+        calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pasar = (new Intent(MainActivity.this, CalcularIMC.class));
+                startActivity(pasar);
+
             }
         });
     }

@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:text="Gráfico Semanal"/>
+    <Button
+        android:id="@+id/imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Calcular IMC"/>
 </LinearLayout>
