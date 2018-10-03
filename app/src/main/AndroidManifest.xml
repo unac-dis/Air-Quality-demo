@@ -20,9 +20,7 @@
         <activity
             android:name=".view.Test"
             android:label="Air Quality"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".view.MainActivity" />
 
         <service android:name=".notifications.MyFirebaseMessagingService">
@@ -35,7 +33,7 @@
         <activity android:name=".view.Graficomensual" />
         <activity android:name=".view.Graficodiario" />
         <activity android:name=".view.Calendario" />
-        <activity android:name=".view.Estadodelclima"></activity>
+        <activity android:name=".view.Estadodelclima" />
         <activity android:name=".view.Splashscreenapp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Navigationdrawer"
+            android:label="@string/title_activity_navigationdrawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
