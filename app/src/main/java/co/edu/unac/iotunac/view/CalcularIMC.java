@@ -11,28 +11,28 @@ import co.edu.unac.iotunac.R;
 
 public class CalcularIMC extends AppCompatActivity {
 
-    EditText ageText,heighText,weightText;
-    private TextView resultText;
+    EditText editAge,editHeight,editWeight;
+    private TextView Indice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculate_imc);
 
-        ageText = (EditText) findViewById(R.id.ageText);
-        heighText = (EditText) findViewById(R.id.heighText);
-        weightText = (EditText) findViewById(R.id.weightText);
-        resultText = (TextView) findViewById(R.id.resultText);
-        Button calculateIMC = (Button) findViewById(R.id.calculateIMC);
+        editAge = (EditText) findViewById(R.id.editAge);
+        editHeight = (EditText) findViewById(R.id.editHeight);
+        editWeight = (EditText) findViewById(R.id.editWeight);
+        Indice = (TextView) findViewById(R.id.Indice);
+        Button button3 = (Button) findViewById(R.id.button3);
 
-        calculateIMC.setOnClickListener(new View.OnClickListener(){
+        button3.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                float n1 = Float.parseFloat(heighText.getText().toString());
-                float n2 = Float.parseFloat(weightText.getText().toString());
+                float n1 = Float.parseFloat(editHeight.getText().toString());
+                float n2 = Float.parseFloat(editWeight.getText().toString());
                 float imc = n2/(n1*n1);
-                resultText.setText(String.valueOf(imc));
+                Indice.setText(String.valueOf(imc));
             }
         });
 

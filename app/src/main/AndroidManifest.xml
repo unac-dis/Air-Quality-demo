@@ -21,11 +21,7 @@
             android:name=".view.Test"
             android:label="Air Quality"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.MainActivity" />
 
@@ -38,7 +34,15 @@
         <activity android:name=".view.Graficosemanal" />
         <activity android:name=".view.Graficomensual" />
         <activity android:name=".view.Graficodiario" />
-        <activity android:name=".view.Calendario"></activity>
+        <activity android:name=".view.Calendario" />
+        <activity android:name=".view.Estadodelclima"></activity>
+        <activity android:name=".view.Splashscreenapp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
