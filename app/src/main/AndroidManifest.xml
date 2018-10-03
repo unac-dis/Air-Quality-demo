@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Navigationdrawer"
+            android:name=".view.Navigationdrawer"
             android:label="@string/title_activity_navigationdrawer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

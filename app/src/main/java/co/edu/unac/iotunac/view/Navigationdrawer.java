@@ -1,17 +1,18 @@
-package co.edu.unac.iotunac;
+package co.edu.unac.iotunac.view;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import co.edu.unac.iotunac.R;
 
 public class Navigationdrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,15 +24,6 @@ public class Navigationdrawer extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -40,6 +32,9 @@ public class Navigationdrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent = new Intent(Navigationdrawer.this, Calendario.class);
+        startActivity(intent);
     }
 
     @Override
@@ -68,10 +63,16 @@ public class Navigationdrawer extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            final AlertDialog.Builder informaciondesarrollador = new AlertDialog.Builder(this);
+            informaciondesarrollador.setIcon(R.drawable.ic_informacion_icon);
+            informaciondesarrollador.setTitle("Info Desarrolladores");
+            informaciondesarrollador.setMessage("Aplicación Desarrollada por Brayan Torres, Kevin Ortiz, Christopher Vargas" +
+                    "y Jhan Sierra; Version: 1.0.0");
+            informaciondesarrollador.setCancelable(false);
+            informaciondesarrollador.setPositiveButton("Cerrar", null);
+            informaciondesarrollador.show();
         }
-
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -80,18 +81,26 @@ public class Navigationdrawer extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        if (id == R.id.nav_resumensemanal) {
+            Intent intent = new Intent(Navigationdrawer.this, Graficosemanal.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_resumenmensual) {
+            Intent intent = new Intent(Navigationdrawer.this, Graficomensual.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_calcularimc) {
+            Intent intent = new Intent(Navigationdrawer.this, CalcularIMC.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_estadodelclima) {
+            Intent intent = new Intent(Navigationdrawer.this, Estadodelclima.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_salir) {
+            finish();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
