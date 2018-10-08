@@ -10,9 +10,17 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="web_client_id">882956572497-9bg6g38ru87b2kh36u1hq91fgu3uhqo9.apps.googleusercontent.com</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="google_title_text">Google Sign In</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="label_google_sign_in">Firebase + Google Sign In</string>
+    <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
+
     <string name="afirma">"Si usted contestó "NO" honestamente a todas las preguntas, entonces puede estar razonablemente seguro que puede comenzar a ser más activo físicamente, pero con un enfoque lento y que se progrese gradualmente.\n"
         "Esta es la manera más segura y fácil."</string>
     <string name="title_activity_test">Test</string>
@@ -29,7 +37,13 @@
          "Att: Dirección de proyecto"
     </string>
     <string name="not_log_in">Autenticación fallida</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Acerca de</string>
 
     <string name="title">Air Quality...</string>
+    <string name="title_activity_navigationdrawer">Menu Principal</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Air Quality</string>
+    <string name="nav_header_subtitle">airepuro@unac.edu.co</string>
+    <string name="nav_header_desc">Navigation header</string>
 </resources>

@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import co.edu.unac.iotunac.auth.LoginActivity;
+import co.edu.unac.iotunac.auth.GoogleSignInActivity;
 import co.edu.unac.iotunac.R;
 
 public class Test extends AppCompatActivity {
@@ -54,20 +54,20 @@ public class Test extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(Test.this);
-                dialogo1.setTitle("¡Atención!");
-                dialogo1.setCancelable(false);
-                dialogo1.setMessage(R.string.afirma);
-                dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder aviso = new AlertDialog.Builder(Test.this);
+                aviso.setTitle("¡Atención!");
+                aviso.setCancelable(false);
+                aviso.setMessage(R.string.afirma);
+                aviso.setCancelable(false);
+                aviso.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
-                        Intent intent = new Intent(Test.this, LoginActivity.class);
+                        Intent intent = new Intent(Test.this, GoogleSignInActivity.class);
                         startActivity(intent);
                         Toast t = Toast.makeText(Test.this, "Ahora puedes iniciar sesión", Toast.LENGTH_SHORT);
                         t.show();
                     }
                 });
-                dialogo1.show();
+                aviso.show();
             }
         });
     }

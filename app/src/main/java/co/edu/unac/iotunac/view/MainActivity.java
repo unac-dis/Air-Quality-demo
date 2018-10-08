@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         calcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pasar = (new Intent(MainActivity.this, CalcularIMC.class));
+                Intent pasar = (new Intent(MainActivity.this, Navigationdrawer.class));
                 startActivity(pasar);
 
             }
