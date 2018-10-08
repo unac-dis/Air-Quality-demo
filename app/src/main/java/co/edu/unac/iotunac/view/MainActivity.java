@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnmes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pasar = (new Intent(MainActivity.this, Graficomensual.class));
+                Intent pasar = (new Intent(MainActivity.this, Navigationdrawer.class));
                 startActivity(pasar);
             }
         });

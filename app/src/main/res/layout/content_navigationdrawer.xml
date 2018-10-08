@@ -8,4 +8,10 @@
     tools:context=".view.Navigationdrawer"
     tools:showIn="@layout/app_bar_navigationdrawer">
 
+    <fragment
+        android:id="@+id/calendariofragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="co.edu.unac.iotunac.calendario"/>
+
 </android.support.constraint.ConstraintLayout>

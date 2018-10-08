@@ -32,9 +32,6 @@ public class Navigationdrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        Intent intent = new Intent(Navigationdrawer.this, Calendario.class);
-        startActivity(intent);
     }
 
     @Override

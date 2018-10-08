@@ -18,6 +18,9 @@
             android:name=".view.CalcularIMC"
             android:label="@string/app_name" />
         <activity
+            android:name=".auth.LoginActivity"
+            android:label="@string/app_name" />
+        <activity
             android:name=".view.Test"
             android:label="Air Quality"
             android:theme="@style/AppTheme.NoActionBar"></activity>
