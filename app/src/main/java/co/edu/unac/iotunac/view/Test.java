@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import co.edu.unac.iotunac.auth.GoogleSignInActivity;
+import co.edu.unac.iotunac.auth.SingInActivity;
 import co.edu.unac.iotunac.R;
-
+/**
+ * Created by Kevin Ortiz on 19/08/2018.
+ */
 public class Test extends AppCompatActivity {
     Button ok;
     ListView list;
@@ -61,7 +63,7 @@ public class Test extends AppCompatActivity {
                 aviso.setCancelable(false);
                 aviso.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
-                        Intent intent = new Intent(Test.this, GoogleSignInActivity.class);
+                        Intent intent = new Intent(Test.this, SingInActivity.class);
                         startActivity(intent);
                         Toast t = Toast.makeText(Test.this, "Ahora puedes iniciar sesión", Toast.LENGTH_SHORT);
                         t.show();

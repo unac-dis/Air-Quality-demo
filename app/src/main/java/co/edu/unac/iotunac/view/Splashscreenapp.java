@@ -10,7 +10,9 @@ import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 import co.edu.unac.iotunac.R;
-
+/**
+ * Created by Brayan Torres on 25/08/2018.
+ */
 public class Splashscreenapp extends AwesomeSplash {
 
     /*@Override

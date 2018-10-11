@@ -23,6 +23,7 @@
 
     <string name="afirma">"Si usted contestó "NO" honestamente a todas las preguntas, entonces puede estar razonablemente seguro que puede comenzar a ser más activo físicamente, pero con un enfoque lento y que se progrese gradualmente.\n"
         "Esta es la manera más segura y fácil."</string>
+    <string name="imc">Gracias por registrarse, tu progreso será fruto de tu constancia y perseverancia, con la tabla encuentra tu rango de peso adecuado </string>
     <string name="title_activity_test">Test</string>
     <string name="Questions">"Si usted tiene entre 15 y 69 años de edad, el cuestionario PAR-Q le indicará si necesita consultar a su médico antes de iniciar un programa de ejercicio o actividad física.\n"</string>
     <string name="datosaggre">"¿Deseraría autorizarnos para almacenar sus datos para generar estadísticas y participar en posibles estudios? \n"
@@ -36,6 +37,8 @@
         " "
          "Att: Dirección de proyecto"
     </string>
+    <string name="logeando">Iniciando sesión</string>
+    <string name="salir">"Apreciado usuario por motivos de bienestar físico, le recomendamos consultar un médico antes de iniciar actividad física</string>
     <string name="not_log_in">Autenticación fallida</string>
     <string name="action_settings">Acerca de</string>
 

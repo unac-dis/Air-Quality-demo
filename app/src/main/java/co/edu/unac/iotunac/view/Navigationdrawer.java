@@ -11,12 +11,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import co.edu.unac.iotunac.R;
 
 public class Navigationdrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    TextView txtName;
+    TextView txtEmail;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

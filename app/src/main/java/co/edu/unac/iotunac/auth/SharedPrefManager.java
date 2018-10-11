@@ -2,9 +2,8 @@ package co.edu.unac.iotunac.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 /**
- * Created by Gino Osahon on 04/03/2017.
+ * Created by Kevin Ortiz on 20/08/2018.
  */
 public class SharedPrefManager {
 

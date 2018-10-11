@@ -18,7 +18,7 @@ public class BaseActivity extends AppCompatActivity {
     public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage(getString(R.string.app_name));
+            mProgressDialog.setMessage(getString(R.string.logeando));
             mProgressDialog.setIndeterminate(true);
         }
 

@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import co.edu.unac.iotunac.R;
-
+/**
+ * Created by Kevin Ortiz on 21/08/2018.
+ */
 public class MainActivity extends AppCompatActivity {
     Button btndia, btnmes, btnsemana, calcular;
     @Override
