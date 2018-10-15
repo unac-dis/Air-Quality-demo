@@ -16,10 +16,6 @@
             android:id="@+id/nav_estadodelclima"
             android:icon="@drawable/ic_clima_icon"
             android:title="Estado del Clima" />
-        <item
-            android:id="@+id/nav_calcularimc"
-            android:icon="@drawable/ic_calcular_icon"
-            android:title="Calcular IMC" />
     </group>
 
     <item android:title="Otros">

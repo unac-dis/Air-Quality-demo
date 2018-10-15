@@ -33,13 +33,13 @@ public class CalcularIMC extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                int n1 = Integer.parseInt(editHeight.getText().toString());
-                int n2 = Integer.parseInt(editWeight.getText().toString());
-                double metro = (n1/100);
-                double imc = (n2/(metro*metro));
+                float n1 = Integer.parseInt((editHeight.getText().toString()));
+                float n2 = Integer.parseInt(editWeight.getText().toString());
+                float metro = (n1/100);
+                float imc = (n2/(metro*metro));
                 ImageView image = new ImageView(CalcularIMC.this);
                 image.setImageResource(R.drawable.ic_logounac_icon);
-                double fin = Math.round(imc);
+                float fin = Math.round(imc);
                 AlertDialog.Builder dialogo1 = new AlertDialog.Builder(CalcularIMC.this);
                 dialogo1.setView(R.layout.imc);
 
@@ -51,7 +51,7 @@ public class CalcularIMC extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-                dialogo1.setMessage("Su IMC es: "+imc);
+                dialogo1.setMessage("Su IMC es: "+fin);
                 dialogo1.show();
                /* AlertDialog.Builder builder =
                         new AlertDialog.Builder(CalcularIMC.this).

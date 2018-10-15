@@ -28,7 +28,7 @@ public class Graficomensual extends AppCompatActivity {
         pieChart.setHoleRadius(40f);
         pieChart.setRotationEnabled(true);
         pieChart.animateXY(1500,1500);
-        pieChart.setDescription("En este Gráfico usted podra ver su progreso a " +
+        pieChart.setDescription("Éste es su progreso a " +
                 "Nivel Mensual.");
         pieChart.setDescriptionTextSize(20f);
 
@@ -39,8 +39,8 @@ public class Graficomensual extends AppCompatActivity {
 
         //creamos una lista para los valores X
         ArrayList<String> valsX = new ArrayList<String>();
-        valsX.add("Nivel de Acrividad");
-        valsX.add("Nivel de Descanso");
+        valsX.add("Cantidad de Actividad");
+        valsX.add("Cantidad de Descanso");
 
         //creamos una lista de colores
         ArrayList<Integer> colors = new ArrayList<Integer>();

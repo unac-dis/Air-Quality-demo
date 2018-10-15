@@ -1,6 +1,10 @@
 package co.edu.unac.iotunac.view;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,18 +13,36 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.plus.People;
+import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.auth.SingInActivity;
+import co.edu.unac.iotunac.functions.Users;
 
 public class Navigationdrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView txtName;
     TextView txtEmail;
     ImageView imageView;
+    SingInActivity hello;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +58,21 @@ public class Navigationdrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        txtName = navigationView.getHeaderView(0).findViewById(R.id.nombreuser);
+        txtEmail = navigationView.getHeaderView(0).findViewById(R.id.usuarioemail);
+        imageView  = navigationView.getHeaderView(0).findViewById(R.id.imageprofile);
+
+
+            /*    String personName = currentUser.getEmail();
+                Uri personPhotoUrl = currentUser.getPhotoUrl();
+                String email = currentUser.getDisplayName();
+*/
+         /*       txtName.setText(hello.);
+                txtEmail.setText(txtEmail);
+
+            Picasso.with(this).load(personPhotoUrl).into(imageView);
+
+*/
     }
 
     @Override
@@ -87,9 +124,6 @@ public class Navigationdrawer extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_resumenmensual) {
             Intent intent = new Intent(Navigationdrawer.this, Graficomensual.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_calcularimc) {
-            Intent intent = new Intent(Navigationdrawer.this, CalcularIMC.class);
             startActivity(intent);
         } else if (id == R.id.nav_estadodelclima) {
             Intent intent = new Intent(Navigationdrawer.this, Estadodelclima.class);
