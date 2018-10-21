@@ -46,7 +46,11 @@
     <string name="nav_header_title">Air Quality</string>
     <string name="nav_header_subtitle">airepuro@unac.edu.co</string>
     <string name="nav_header_desc">Navigation header</string>
-
+    <string name="kevin">Kevin Hanmerly \n Ortiz Dimingo</string>
+    <string name="brayan">Brayan David \n Torres Suares</string>
+    <string name="jhan">Jhan Kein \n Sierra</string>
+    <string name="version">App Version 1.0 ® \n Desarrollada por:</string>
+    <string name="christofer">Christopher \n Vargas Isaza</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment"></string>
 </resources>

@@ -22,7 +22,9 @@
        android:layout_marginTop="5dp"
        android:background="#ffffcc"
        >
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,14 +44,14 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:hint="¿Cuál es su estatura?"/>
+                android:hint="¿Cuál es su estatura en centímetros?"/>
             <EditText
                 android:id="@+id/editWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:hint="Diganos su peso"/>
+                android:hint="Diganos su peso en Kg"/>
 
             <TextView
                 android:id="@+id/goals"
@@ -92,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="guardar" />
         </LinearLayout>
+</ScrollView>
    </android.support.v7.widget.CardView>
 
     </LinearLayout>

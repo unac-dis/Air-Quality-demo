@@ -1,14 +1,56 @@
 package co.edu.unac.iotunac.functions;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+
 import java.io.Serializable;
 
+import co.edu.unac.iotunac.auth.SingInActivity;
+
 public class Users implements Serializable{
+    int id;
     String correo;
-    int peso;
-    int estatura;
+    int edad;
+    Double peso;
+    Double estatura;
     int horassueño;
     int numpasos;
     double imc;
+    String name;
+
+    public Users(int id,String correo, int edad, Double peso, Double estatura, int horassueño, int numpasos, double imc) {
+        this.correo = correo;
+        this.edad = edad;
+        this.peso = peso;
+        this.estatura = estatura;
+        this.horassueño = horassueño;
+        this.numpasos = numpasos;
+        this.imc = imc;
+        this.imc = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public double getImc() {
         return imc;
@@ -29,19 +71,19 @@ public class Users implements Serializable{
         this.correo = correo;
     }
 
-    public int getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 
-    public int getEstatura() {
+    public Double getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(int estatura) {
+    public void setEstatura(Double estatura) {
         this.estatura = estatura;
     }
 
@@ -60,4 +102,5 @@ public class Users implements Serializable{
     public void setNumpasos(int numpasos) {
         this.numpasos = numpasos;
     }
+
 }

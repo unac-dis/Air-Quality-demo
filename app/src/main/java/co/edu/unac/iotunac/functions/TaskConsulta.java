@@ -3,40 +3,54 @@ package co.edu.unac.iotunac.functions;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.client.methods.HttpPost;
-import cz.msebera.android.httpclient.entity.StringEntity;
+import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
-public class TaskConsulta extends AsyncTask<Users, Void, String> {
+public class TaskConsulta extends AsyncTask<Sensor, Void, List<Sensor>> {
+
 
     @Override
-    protected String doInBackground(Users... users) {
+    protected List<Sensor> doInBackground(Sensor... sensors) {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost del = new HttpPost("http://170.238.226.93/save/usuarios");
+        HttpGet del = new HttpGet("http://170.238.226.93/demo/save/usuarios");
         del.setHeader("content-type", "application/json");
 
         try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("correo", users[0].getCorreo());
-            jsonObject.put("peso", users[0].getPeso());
-            jsonObject.put("altura", users[0].getEstatura());
-            jsonObject.put("cantidaddepasos", users[0].getNumpasos());
-            jsonObject.put("imc", users[0].getImc());
-            jsonObject.put("horasdesueño", users[0].getHorassueño());
-            del.setEntity(new StringEntity(jsonObject.toString()));
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());
 
-            return respStr;
+            JSONArray respJSON = new JSONArray(respStr);
 
+            List<Sensor> productsList = new ArrayList<>();
+
+            for (int i = 0; i < respJSON.length(); i++) {
+                JSONObject obj = respJSON.getJSONObject(i);
+
+                Sensor sensor = new Sensor();
+                sensor.setFecha((Date) obj.get("fecha"));
+                sensor.setTemperatura(obj.getDouble("temperatura"));
+                sensor.setHumedad(obj.getDouble("humedad"));
+                sensor.setCo2(obj.getDouble("co2"));
+                sensor.setSensor(obj.getInt("idsensor"));
+
+                productsList.add(sensor);
+            }
+
+            return productsList;
         } catch (Exception ex) {
             Log.e("ServicioRest", "Error!", ex);
         }
-        return "";
+        return new ArrayList<>();
     }
+
 }

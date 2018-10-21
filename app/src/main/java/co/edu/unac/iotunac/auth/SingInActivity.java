@@ -48,8 +48,24 @@ public class SingInActivity extends BaseActivity implements
     static Uri imageViews;
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
-    private FirebaseAuth mAuth;
+    static FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
+
+    public static String getTxtNames() {
+        return txtNames;
+    }
+
+    public static String getTxtEmails() {
+        return txtEmails;
+    }
+
+    public static Uri getImageViews() {
+        return imageViews;
+    }
+
+    public static FirebaseAuth getmAuth() {
+        return mAuth;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -41,7 +41,6 @@ public class Navigationdrawer extends AppCompatActivity
     TextView txtName;
     TextView txtEmail;
     ImageView imageView;
-    SingInActivity hello;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +48,6 @@ public class Navigationdrawer extends AppCompatActivity
         setContentView(R.layout.activity_navigationdrawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -61,18 +59,13 @@ public class Navigationdrawer extends AppCompatActivity
         txtName = navigationView.getHeaderView(0).findViewById(R.id.nombreuser);
         txtEmail = navigationView.getHeaderView(0).findViewById(R.id.usuarioemail);
         imageView  = navigationView.getHeaderView(0).findViewById(R.id.imageprofile);
-
-
-            /*    String personName = currentUser.getEmail();
-                Uri personPhotoUrl = currentUser.getPhotoUrl();
-                String email = currentUser.getDisplayName();
-*/
-         /*       txtName.setText(hello.);
-                txtEmail.setText(txtEmail);
-
+                String personName = SingInActivity.getTxtNames();
+                Uri personPhotoUrl = SingInActivity.getImageViews();
+                String email = SingInActivity.getTxtEmails();
+                txtName.setText(personName);
+                txtEmail.setText(email);
             Picasso.with(this).load(personPhotoUrl).into(imageView);
 
-*/
     }
 
     @Override
@@ -103,9 +96,8 @@ public class Navigationdrawer extends AppCompatActivity
         if (id == R.id.action_settings) {
             final AlertDialog.Builder informaciondesarrollador = new AlertDialog.Builder(this);
             informaciondesarrollador.setIcon(R.drawable.ic_informacion_icon);
-            informaciondesarrollador.setTitle("Info Desarrolladores");
-            informaciondesarrollador.setMessage("Aplicación Desarrollada por Brayan Torres, Kevin Ortiz, Christopher Vargas" +
-                    "y Jhan Sierra; Version: 1.0.0");
+            informaciondesarrollador.setView(R.layout.info);
+            informaciondesarrollador.setMessage("Look!");
             informaciondesarrollador.setCancelable(false);
             informaciondesarrollador.setPositiveButton("Cerrar", null);
             informaciondesarrollador.show();
