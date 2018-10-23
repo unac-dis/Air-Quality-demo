@@ -32,6 +32,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 
+import co.edu.unac.iotunac.Podometro.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
 import co.edu.unac.iotunac.functions.Users;
@@ -116,6 +117,9 @@ public class Navigationdrawer extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_resumenmensual) {
             Intent intent = new Intent(Navigationdrawer.this, Graficomensual.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_podometro) {
+            Intent intent = new Intent(Navigationdrawer.this, Podometro.class);
             startActivity(intent);
         } else if (id == R.id.nav_estadodelclima) {
             Intent intent = new Intent(Navigationdrawer.this, Estadodelclima.class);

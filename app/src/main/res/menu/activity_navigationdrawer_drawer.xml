@@ -16,6 +16,10 @@
             android:id="@+id/nav_estadodelclima"
             android:icon="@drawable/ic_clima_icon"
             android:title="Estado del Clima" />
+        <item
+            android:id="@+id/nav_podometro"
+            android:icon="@drawable/ic_depie_icon"
+            android:title="Podómetro" />
     </group>
 
     <item android:title="Otros">

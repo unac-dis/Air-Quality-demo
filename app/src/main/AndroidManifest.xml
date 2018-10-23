@@ -20,6 +20,7 @@
         <activity android:name=".auth.SingInActivity"
             android:label="Login">
         </activity>
+        <activity android:name=".Podometro.Podometro"></activity>
         <activity
             android:name=".view.Test"
             android:label="Air Quality"

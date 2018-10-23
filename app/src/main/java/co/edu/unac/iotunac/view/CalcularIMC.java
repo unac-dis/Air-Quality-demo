@@ -52,7 +52,7 @@ public class CalcularIMC extends AppCompatActivity {
                 dialogo1.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
 
-                        TaskRegistro usersRegistry = new TaskRegistro();
+                     /*   TaskRegistro usersRegistry = new TaskRegistro();
                         Users userRegistry = new Users();
                         userRegistry.setCorreo(email);
                         userRegistry.setEstatura(Double.valueOf(editHeight.getText().toString()));
@@ -67,7 +67,7 @@ public class CalcularIMC extends AppCompatActivity {
                             e.printStackTrace();
                         } catch (ExecutionException e) {
                             e.printStackTrace();
-                        }
+                        }*/
                         Intent intent = new Intent(getApplicationContext(), Navigationdrawer.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

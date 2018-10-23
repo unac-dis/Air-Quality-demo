@@ -1,11 +1,6 @@
 package co.edu.unac.iotunac.functions;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-
 import java.io.Serializable;
-
-import co.edu.unac.iotunac.auth.SingInActivity;
 
 public class Users implements Serializable{
     int id;
