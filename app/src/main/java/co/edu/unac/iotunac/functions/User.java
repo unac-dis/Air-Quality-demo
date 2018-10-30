@@ -2,7 +2,7 @@ package co.edu.unac.iotunac.functions;
 
 import java.io.Serializable;
 
-public class Users implements Serializable{
+public class User implements Serializable{
     int id;
     String correo;
     int edad;
@@ -12,17 +12,6 @@ public class Users implements Serializable{
     int numpasos;
     double imc;
     String name;
-
-    public Users(int id,String correo, int edad, Double peso, Double estatura, int horassueño, int numpasos, double imc) {
-        this.correo = correo;
-        this.edad = edad;
-        this.peso = peso;
-        this.estatura = estatura;
-        this.horassueño = horassueño;
-        this.numpasos = numpasos;
-        this.imc = imc;
-        this.imc = id;
-    }
 
     public String getName() {
         return name;
@@ -53,9 +42,6 @@ public class Users implements Serializable{
 
     public void setImc(double imc) {
         this.imc = imc;
-    }
-
-    public Users() {
     }
 
     public String getCorreo() {

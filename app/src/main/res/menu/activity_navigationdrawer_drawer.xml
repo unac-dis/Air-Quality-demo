@@ -2,37 +2,61 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_resumenmensual"
-            android:icon="@drawable/ic_resumen_icon"
-            android:title="Resumen Mensual" />
-        <item
-            android:id="@+id/nav_resumensemanal"
-            android:icon="@drawable/ic_resumensemanal_icon"
-            android:title="Resumen Semanal" />
-        <item
-            android:id="@+id/nav_estadodelclima"
-            android:icon="@drawable/ic_clima_icon"
-            android:title="Estado del Clima" />
-        <item
-            android:id="@+id/nav_podometro"
-            android:icon="@drawable/ic_depie_icon"
-            android:title="Podómetro" />
-    </group>
-
-    <item android:title="Otros">
+        <item android:title="Ver Resultados">
         <menu>
+
+
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_resumenmensual"
+                android:icon="@drawable/ic_resumen_icon"
+                android:title="Resumen Mensual" />
+
             <item
-                android:id="@+id/nav_salir"
-                android:icon="@drawable/ic_salir_icon"
-                android:title="Salir" />
+                android:id="@+id/nav_resumensemanal"
+                android:icon="@drawable/ic_resumensemanal_icon"
+                android:title="Resumen Semanal" />
+
         </menu>
     </item>
+    <item android:title="Ver Calidad del aire">
+        <menu>
 
+            <item
+                android:id="@+id/nav_estadodelclima"
+                android:icon="@drawable/ic_clima_icon"
+                android:title="Estado del Clima" />
+
+        </menu>
+    </item>
+    <item android:title="Caminar">
+        <menu>
+
+            <item
+                android:id="@+id/nav_podometro"
+                android:icon="@drawable/ic_depie_icon"
+                android:title="Podómetro" />
+
+        </menu>
+    </item>
+        <item android:title="Descansar">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_descansar"
+                    android:icon="@drawable/ic_depie_icon"
+                    android:title="Dormir" />
+
+            </menu>
+        </item>
+</group>
+
+<item android:title="Otros">
+<menu>
+    <item
+        android:id="@+id/nav_salir"
+        android:icon="@drawable/ic_salir_icon"
+        android:title="Salir" />
 </menu>
+</item>
+    </menu>

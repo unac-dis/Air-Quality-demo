@@ -1,10 +1,7 @@
 package co.edu.unac.iotunac.view;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,29 +10,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.plus.People;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
-
-import java.io.InputStream;
 
 import co.edu.unac.iotunac.Podometro.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
-import co.edu.unac.iotunac.functions.Users;
 
 public class Navigationdrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -124,9 +108,10 @@ public class Navigationdrawer extends AppCompatActivity
         } else if (id == R.id.nav_estadodelclima) {
             Intent intent = new Intent(Navigationdrawer.this, Estadodelclima.class);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_salir) {
+        } else if (id == R.id.nav_descansar) {
+            Intent intent = new Intent(Navigationdrawer.this, Descanso.class);
+            startActivity(intent);
+        }  else if (id == R.id.nav_salir) {
             finish();
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);

@@ -4,27 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
+    android:padding="10sp"
     android:orientation="vertical">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:textStyle="bold"
-    android:textSize="25dp"
-    android:textColor="#3366ff"
-    android:text="Registra tu información"/>
-   <android.support.v7.widget.CardView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:cardCornerRadius="10dp"
-       app:cardElevation="8dp"
-       android:layout_marginTop="5dp"
-       android:background="#ffffcc"
-       >
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="#3366ff"
+        android:text="@string/Registro"/>
+    <ScrollView
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +76,6 @@
                 android:hint="Ingresa # de pasos propuestos"
                 android:inputType="number" />
 
-
             <Button
                 android:id="@+id/button3"
                 android:textColor="#3366ff"
@@ -95,8 +88,6 @@
                 android:text="guardar" />
         </LinearLayout>
 </ScrollView>
-   </android.support.v7.widget.CardView>
-
     </LinearLayout>
 
 

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unac.iotunac.functions.Users;
+import co.edu.unac.iotunac.functions.User;
 
 import static co.edu.unac.iotunac.LocalRepository.functions.UserContract.UserEntry.USERS_COLUMN_CORREO;
 import static co.edu.unac.iotunac.LocalRepository.functions.UserContract.UserEntry.USERS_COLUMN_EDAD;
@@ -26,7 +26,7 @@ public class UserRepository {
         this.dbHelper = dbHelper;
     }
 
-    public boolean insertUser(Users user)
+    public boolean insertUser(User user)
     {
         try {
             ContentValues contentValues = new ContentValues();
@@ -47,8 +47,8 @@ public class UserRepository {
         }
     }
 
-    public Users getUserByUserName(String userName){
-        Users user = null;
+    public User getUserByUserName(String userName){
+        User user = null;
         try {
             Cursor query =  dbHelper.db.rawQuery("SELECT * FROM "
                             + USERS_TABLE_NAME
@@ -67,8 +67,8 @@ public class UserRepository {
 
 
 
-    public List<Users> getAllUsers() {
-        List<Users> users = new ArrayList<Users>();
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<User>();
         try {
             Cursor query =  dbHelper.db.rawQuery("SELECT * FROM "
                             + USERS_TABLE_NAME
@@ -85,8 +85,8 @@ public class UserRepository {
         return users;
     }
 
-    private Users mapUser(Cursor query){
-        Users user = new Users();
+    private User mapUser(Cursor query){
+        User user = new User();
         try {
             user.setId(query.getInt(query.getColumnIndex(USERS_COLUMN_ID)));
             user.setName(query.getString(query.getColumnIndex(USERS_COLUMN_NAME)));
@@ -103,8 +103,8 @@ public class UserRepository {
         return user;
     }
 
-    private List<Users> mapUsers(Cursor query) {
-        List<Users> users = new ArrayList<Users>();
+    private List<User> mapUsers(Cursor query) {
+        List<User> users = new ArrayList<User>();
         for(query.moveToFirst(); !query.isAfterLast(); query.moveToNext()){
             users.add(mapUser(query));
         }

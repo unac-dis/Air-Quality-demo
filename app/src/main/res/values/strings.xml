@@ -40,6 +40,7 @@
     <string name="action_settings">Acerca de</string>
 
     <string name="title">Air Quality...</string>
+    <string name="Registro">Registra tu información</string>
     <string name="title_activity_navigationdrawer">Menu Principal</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -53,4 +54,7 @@
     <string name="christofer">Christopher \n Vargas Isaza</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment"></string>
+    <string name="dormir">dormir</string>
+    <string name="pausar">Pausar</string>
+    <string name="despertar">Despertar</string>
 </resources>

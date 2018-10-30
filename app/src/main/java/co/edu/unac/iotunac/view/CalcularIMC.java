@@ -14,12 +14,14 @@ import java.util.concurrent.ExecutionException;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
 import co.edu.unac.iotunac.functions.TaskRegistro;
-import co.edu.unac.iotunac.functions.Users;
+import co.edu.unac.iotunac.functions.User;
 
 public class CalcularIMC extends AppCompatActivity {
 
-    EditText editAge,editHeight,editWeight, editpasos, editsleep;
-
+    EditText editAge, editHeight, editWeight, editpasos, editsleep;
+    Button button3;
+    Double fin, imc;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,56 +29,64 @@ public class CalcularIMC extends AppCompatActivity {
         editAge = (EditText) findViewById(R.id.editAge);
         editHeight = (EditText) findViewById(R.id.editHeight);
         editWeight = (EditText) findViewById(R.id.editWeight);
-        editsleep = findViewById(R.id.editSleep);
-        editpasos = findViewById(R.id.editPasos);
+        editsleep = (EditText)  findViewById(R.id.editSleep);
+        editpasos = (EditText) findViewById(R.id.editPasos);
 
-        final String email = SingInActivity.getTxtEmails();
-        final Button button3 = (Button) findViewById(R.id.button3);
-        button3.setOnClickListener(new View.OnClickListener(){
+        button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editHeight.getText().toString().isEmpty()) {
-                    editHeight.setError("campo obligatorio");
-                }
-                if (editWeight.getText().toString().isEmpty()) {
-                    editWeight.setError("campo obligatorio");
-                }else{
-                float n1 = Integer.parseInt((editHeight.getText().toString()));
-                float n2 = Integer.parseInt(editWeight.getText().toString());
-                float metro = (n1/100);
-                float imc = (n2/(metro*metro));
-                float fin = Math.round(imc);
-                AlertDialog.Builder dialogo1 = new AlertDialog.Builder(CalcularIMC.this);
-                dialogo1.setView(R.layout.imc);
-                dialogo1.setCancelable(false);
-                dialogo1.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogo1, int id) {
-
-                     /*   TaskRegistro usersRegistry = new TaskRegistro();
-                        Users userRegistry = new Users();
-                        userRegistry.setCorreo(email);
-                        userRegistry.setEstatura(Double.valueOf(editHeight.getText().toString()));
-                        userRegistry.setPeso(Double.valueOf(editWeight.getText().toString()));
-                        userRegistry.setEdad(Integer.parseInt(editAge.getText().toString()));
-                        userRegistry.setHorassueño(Integer.parseInt(editsleep.getText().toString()));
-                        userRegistry.setNumpasos(Integer.parseInt(editpasos.getText().toString()));
-
-                        try {
-                            String resul = usersRegistry.execute(userRegistry).get();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (ExecutionException e) {
-                            e.printStackTrace();
-                        }*/
-                        Intent intent = new Intent(getApplicationContext(), Navigationdrawer.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
-                });
-                dialogo1.setMessage("Su IMC es: "+fin);
-                dialogo1.show();
-            }
+                calcular();
+                dialog();
             }
         });
+    }
+    public void calcular(){
+        if (editHeight.getText().toString().isEmpty()) {
+            editHeight.setError("campo obligatorio");
+        }
+        if (editWeight.getText().toString().isEmpty()) {
+            editWeight.setError("campo obligatorio");
+        } else {
+            Double n1 = Double.valueOf(Integer.parseInt((editHeight.getText().toString())));
+            Double n2 = Double.valueOf(Integer.parseInt(editWeight.getText().toString()));
+            Double metro = (n1 / 100);
+            imc = (n2 / (metro * metro));
+            fin = Double.valueOf(Math.round(imc));
+        }
+    }
+    public void dialog(){
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(CalcularIMC.this);
+        dialogo1.setView(R.layout.imc);
+        dialogo1.setCancelable(false);
+        dialogo1.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo1, int id) {
+                registrar();
+                Intent intent = new Intent(getApplicationContext(), Navigationdrawer.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+        dialogo1.setMessage("Su IMC es: " + fin);
+        dialogo1.show();
+    }
+    public void registrar (){
+        email = SingInActivity.getTxtEmails();
+        TaskRegistro usersRegistry = new TaskRegistro();
+        User userRegistry = new User();
+        userRegistry.setCorreo(email);
+        userRegistry.setEstatura(Double.valueOf(editHeight.getText().toString()));
+        userRegistry.setPeso(Double.valueOf(editWeight.getText().toString()));
+        userRegistry.setEdad(Integer.parseInt(editAge.getText().toString()));
+        userRegistry.setHorassueño(Integer.parseInt(editsleep.getText().toString()));
+        userRegistry.setNumpasos(Integer.parseInt(editpasos.getText().toString()));
+        userRegistry.setImc(fin);
+        try {
+           String resul = usersRegistry.execute(userRegistry).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
