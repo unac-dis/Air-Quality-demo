@@ -100,8 +100,8 @@ public class CalcularIMC extends AppCompatActivity {
 
         try {
             String resul = usersRegistry.execute(userRegistry).get();
-            DBSQLiteHelper guardar = new DBSQLiteHelper(this);
-            guardar.insertUser(userRegistry);
+    //        DBSQLiteHelper guardar = new DBSQLiteHelper(this);
+      //      guardar.insertUser(userRegistry);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
