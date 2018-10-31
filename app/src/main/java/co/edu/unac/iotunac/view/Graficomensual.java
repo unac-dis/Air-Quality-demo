@@ -21,10 +21,8 @@ public class Graficomensual extends AppCompatActivity {
         setContentView(R.layout.activity_graficomensual);
 
         PieChart pieChart;
-
         pieChart = findViewById(R.id.pieChartMensual);
 
-        //definimos algunos atributos
         pieChart.setHoleRadius(40f);
         pieChart.setRotationEnabled(true);
         pieChart.animateXY(1500,1500);

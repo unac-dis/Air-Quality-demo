@@ -21,18 +21,6 @@ public class Descanso extends AppCompatActivity {
 
         chronometer = findViewById(R.id.chronometer);
         chronometer.setFormat("Tiempo de Sueño: %s");
-
-    /*   chronometer.setBase(SystemClock.elapsedRealtime());
-
-        chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-            @Override
-            public void onChronometerTick(Chronometer chronometer) {
-                if ((SystemClock.elapsedRealtime() - chronometer.getBase()) >= 10000){
-                    chronometer.setBase(SystemClock.elapsedRealtime());
-                    Toast.makeText(Descanso.this, "Bing!", Toast.LENGTH_LONG).show();
-                }
-            }
-        });*/
     }
 
     public void startChronometer(View view){

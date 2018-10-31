@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group android:checkableBehavior="single">
-        <item android:title="Ver Resultados">
-        <menu>
 
 
+    <item android:title="Ver Resultados" />
+    <item
+        android:id="@+id/prueba"
+        android:title="Hola">
             <item
                 android:id="@+id/nav_resumenmensual"
                 android:icon="@drawable/ic_resumen_icon"
@@ -16,9 +17,8 @@
                 android:id="@+id/nav_resumensemanal"
                 android:icon="@drawable/ic_resumensemanal_icon"
                 android:title="Resumen Semanal" />
-
-        </menu>
     </item>
+
     <item android:title="Ver Calidad del aire">
         <menu>
 
@@ -39,24 +39,24 @@
 
         </menu>
     </item>
-        <item android:title="Descansar">
-            <menu>
+    <item android:title="Descansar">
+        <menu>
 
-                <item
-                    android:id="@+id/nav_descansar"
-                    android:icon="@drawable/ic_depie_icon"
-                    android:title="Dormir" />
+            <item
+                android:id="@+id/nav_descansar"
+                android:icon="@drawable/ic_depie_icon"
+                android:title="Dormir" />
 
-            </menu>
-        </item>
-</group>
+        </menu>
+    </item>
 
-<item android:title="Otros">
-<menu>
-    <item
-        android:id="@+id/nav_salir"
-        android:icon="@drawable/ic_salir_icon"
-        android:title="Salir" />
+
+    <item android:title="Otros">
+        <menu>
+            <item
+                android:id="@+id/nav_salir"
+                android:icon="@drawable/ic_salir_icon"
+                android:title="Salir" />
+        </menu>
+    </item>
 </menu>
-</item>
-    </menu>

@@ -12,12 +12,13 @@ import cz.msebera.android.httpclient.client.utils.URIBuilder;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
+/*** Created by Kevin Ortiz on 05/10/2018.*/
+
 public class TaskRegistro extends AsyncTask<User, Void, String> {
     static int code;
     private Context Context;
 
-    public TaskRegistro() {
-    }
+    public TaskRegistro() { }
 
     public static int getCode() {
         return code;

@@ -18,12 +18,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             String titulo = remoteMessage.getNotification().getTitle();
             String texto = remoteMessage.getNotification().getBody();
-
             Log.d(LOGTAG, "NOTIFICACION RECIBIDA");
             Log.d(LOGTAG, "Título: " + titulo);
             Log.d(LOGTAG, "Texto: " + texto);
-
-            //Opcional: mostramos la notificación en la barra de estado
+            //mostramos la notificación en la barra de estado
             showNotification(titulo, texto);
         }
     }

@@ -16,7 +16,6 @@ public class Function {
         return ((ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
     }
 
-
     public static String executeGet(String targetURL){
         URL url;
         HttpURLConnection connection = null;
@@ -87,7 +86,6 @@ public class Function {
                 case 5:
                     icon = "&#xf019;";
                     break;
-
             }
         }
         return icon;

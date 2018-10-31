@@ -15,13 +15,6 @@ import co.edu.unac.iotunac.R;
  */
 public class Splashscreenapp extends AwesomeSplash {
 
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splashscreenapp);
-    }
-    */
-
     @Override
     public void initSplash(ConfigSplash configSplash) {
         ActionBar actionBar = getSupportActionBar();
@@ -29,20 +22,18 @@ public class Splashscreenapp extends AwesomeSplash {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //Background animation
+
         configSplash.setBackgroundColor(R.color.bg_splash);
         configSplash.setAnimCircularRevealDuration(2000);
         configSplash.setRevealFlagX(Flags.REVEAL_LEFT);
         configSplash.setRevealFlagY(Flags.REVEAL_BOTTOM);
 
-        //Logo
         configSplash.setLogoSplash(R.drawable.ic_logounac_icon);
         configSplash.setOriginalHeight(200);
         configSplash.setOriginalWidth(200);
         configSplash.setAnimLogoSplashDuration(2000);
         configSplash.setAnimLogoSplashTechnique(Techniques.Bounce);
 
-        //Title
         configSplash.setTitleSplash(getString(R.string.title));
         configSplash.setTitleFont("fonts/volatire.ttf");
         configSplash.setTitleTextColor(R.color.colortitle);
@@ -53,9 +44,7 @@ public class Splashscreenapp extends AwesomeSplash {
 
     @Override
     public void animationsFinished() {
-
         startActivity(new Intent(Splashscreenapp.this, Test.class));
         finish();
-
     }
 }

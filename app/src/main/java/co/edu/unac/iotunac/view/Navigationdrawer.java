@@ -65,24 +65,19 @@ public class Navigationdrawer extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigationdrawer, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             final AlertDialog.Builder informaciondesarrollador = new AlertDialog.Builder(this);
             informaciondesarrollador.setIcon(R.drawable.ic_informacion_icon);
             informaciondesarrollador.setView(R.layout.info);
-            informaciondesarrollador.setMessage("Look!");
+            informaciondesarrollador.setMessage("Info!");
             informaciondesarrollador.setCancelable(false);
             informaciondesarrollador.setPositiveButton("Cerrar", null);
             informaciondesarrollador.show();
@@ -93,9 +88,8 @@ public class Navigationdrawer extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
+        int id = item.getItemId();
         if (id == R.id.nav_resumensemanal) {
             Intent intent = new Intent(Navigationdrawer.this, Graficosemanal.class);
             startActivity(intent);

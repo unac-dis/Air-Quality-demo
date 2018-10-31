@@ -2,6 +2,7 @@ package co.edu.unac.iotunac.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 
 import java.util.concurrent.ExecutionException;
 
+import co.edu.unac.iotunac.LocalDB.DBSQLiteHelper;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
 import co.edu.unac.iotunac.functions.TaskRegistro;
@@ -71,6 +73,11 @@ public class CalcularIMC extends AppCompatActivity {
         dialogo1.show();
     }
     public void registrar (){
+
+        DBSQLiteHelper mHelper = new DBSQLiteHelper(getApplicationContext());
+        SQLiteDatabase midb = mHelper.getReadableDatabase();
+        midb = mHelper.getWritableDatabase();
+
         email = SingInActivity.getTxtEmails();
         TaskRegistro usersRegistry = new TaskRegistro();
         User userRegistry = new User();

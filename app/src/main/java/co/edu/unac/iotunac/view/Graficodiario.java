@@ -21,9 +21,7 @@ public class Graficodiario extends AppCompatActivity {
         setContentView(R.layout.activity_graficodiario);
 
         PieChart pieChart;
-
         pieChart = findViewById(R.id.pieChartDiario);
-
         //definimos algunos atributos
         pieChart.setHoleRadius(40f);
         pieChart.setRotationEnabled(true);

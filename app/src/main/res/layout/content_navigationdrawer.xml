@@ -12,6 +12,6 @@
         android:id="@+id/calendariofragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="co.edu.unac.iotunac.calendario"/>
+        android:name="co.edu.unac.iotunac.view.calendario"/>
 
 </android.support.constraint.ConstraintLayout>

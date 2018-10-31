@@ -16,13 +16,15 @@ import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
+/*** Created by Kevin Ortiz on 02/10/2018.*/
+
 public class TaskConsulta extends AsyncTask<Sensor, Void, List<Sensor>> {
 
 
     @Override
     protected List<Sensor> doInBackground(Sensor... sensors) {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpGet del = new HttpGet("http://170.238.226.93/demo/save/usuarios");
+        HttpGet del = new HttpGet("http://170.238.226.93/info/see/");
         del.setHeader("content-type", "application/json");
 
         try {

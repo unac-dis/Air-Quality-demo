@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import co.edu.unac.iotunac.auth.SingInActivity;
 import co.edu.unac.iotunac.R;
-/**
- * Created by Kevin Ortiz on 19/08/2018.
- */
+
+/*** Created by Kevin Ortiz on 19/08/2018.*/
+
 public class Test extends AppCompatActivity {
     Button ok;
     ListView list;

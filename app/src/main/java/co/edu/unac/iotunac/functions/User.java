@@ -2,6 +2,8 @@ package co.edu.unac.iotunac.functions;
 
 import java.io.Serializable;
 
+/*** Created by Kevin Ortiz on 15/08/2018.*/
+
 public class User implements Serializable{
     int id;
     String correo;
@@ -83,5 +85,4 @@ public class User implements Serializable{
     public void setNumpasos(int numpasos) {
         this.numpasos = numpasos;
     }
-
 }

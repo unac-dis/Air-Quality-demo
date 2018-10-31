@@ -2,6 +2,8 @@ package co.edu.unac.iotunac.functions;
 
 import java.util.Date;
 
+/*** Created by Kevin Ortiz on 10/09/2018.*/
+
 public class Sensor {
     int idsensor;
     double temperatura;
@@ -9,8 +11,7 @@ public class Sensor {
     Date fecha;
     double co2;
 
-    public Sensor() {
-    }
+    public Sensor() { }
 
     public int getSensor() {
         return idsensor;

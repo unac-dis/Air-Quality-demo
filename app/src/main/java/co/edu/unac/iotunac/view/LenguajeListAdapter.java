@@ -14,9 +14,8 @@ import android.widget.TextView;
 
 import co.edu.unac.iotunac.R;
 
-/**
- * Created by Kevin Ortiz on 20/08/2018.
- */
+/*** Created by Kevin Ortiz on 20/08/2018.*/
+
 public class LenguajeListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
@@ -31,7 +30,6 @@ public class LenguajeListAdapter extends ArrayAdapter<String> {
     }
 
     public View getView(int posicion,View view, ViewGroup parent){
-
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.list_item,null,true);
         final TextView txtTitle = (TextView) rowView.findViewById(R.id.pregunta);;

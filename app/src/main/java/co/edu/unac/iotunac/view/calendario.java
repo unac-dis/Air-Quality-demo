@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac;
+package co.edu.unac.iotunac.view;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -12,6 +12,7 @@ import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.view.Graficodiario;
 import co.edu.unac.iotunac.view.Graficomensual;
 import co.edu.unac.iotunac.view.Graficosemanal;
@@ -22,18 +23,15 @@ public class calendario extends Fragment {
     ImageView imageView;
 
     public calendario() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendario, container, false);
 
         calendarView = view.findViewById(R.id.calendarView);
         imageView = view.findViewById(R.id.imageView);
-
         calendarView.setFirstDayOfWeek(1);
         calendarView.setShowWeekNumber(true);
 

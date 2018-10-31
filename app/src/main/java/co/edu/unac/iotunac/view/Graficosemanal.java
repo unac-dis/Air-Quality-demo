@@ -21,10 +21,8 @@ public class Graficosemanal extends AppCompatActivity {
         setContentView(R.layout.activity_graficosemanal);
 
         PieChart pieChart;
-
         pieChart = findViewById(R.id.pieChart);
 
-        //definimos algunos atributos
         pieChart.setHoleRadius(40f);
         pieChart.setRotationEnabled(true);
         pieChart.animateXY(1500,1500);

@@ -2,16 +2,13 @@ package co.edu.unac.iotunac.auth;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-/**
- * Created by Kevin Ortiz on 20/08/2018.
- */
-public class SharedPrefManager {
 
+/*** Created by Kevin Ortiz on 20/08/2018.*/
+
+public class SharedPrefManager {
     SharedPreferences sharedPreferences;
     Context mContext;
-    // shared pref mode
     int PRIVATE_MODE = 0;
-    // Shared preferences file name
     private static final String PREF_NAME = "sessionPref";
     SharedPreferences.Editor editor;
 
@@ -21,19 +18,16 @@ public class SharedPrefManager {
         editor = sharedPreferences.edit();
     }
 
-
     public void saveIsLoggedIn(Context context, Boolean isLoggedIn){
         mContext = context;
         sharedPreferences = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean ("IS_LOGGED_IN", isLoggedIn);
         editor.commit();
-
     }
 
     public boolean getISLogged_IN() {
-        //mContext = context;
-        sharedPreferences = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
+          sharedPreferences = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         return sharedPreferences.getBoolean("IS_LOGGED_IN", false);
     }
 
@@ -46,7 +40,6 @@ public class SharedPrefManager {
     }
 
     public String getUserToken(){
-        //mContext = context;
         sharedPreferences = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         return sharedPreferences.getString("ID_TOKEN", "");
     }
@@ -63,7 +56,6 @@ public class SharedPrefManager {
         sharedPreferences = mContext.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         return sharedPreferences.getString("EMAIL", null);
     }
-
 
     public void saveName(Context context, String name){
         mContext = context;

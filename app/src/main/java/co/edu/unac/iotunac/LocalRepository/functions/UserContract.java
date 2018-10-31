@@ -2,9 +2,6 @@ package co.edu.unac.iotunac.LocalRepository.functions;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by JohanPerez on 20/09/2016.
- */
 public class UserContract {
     public static abstract class UserEntry implements BaseColumns {
         public static final String USERS_TABLE_NAME = "users";
