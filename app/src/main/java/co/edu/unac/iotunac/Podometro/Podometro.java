@@ -1,6 +1,7 @@
 package co.edu.unac.iotunac.Podometro;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.view.Tablaprogresopasos;
 
 public class Podometro extends AppCompatActivity implements SensorEventListener, StepListener {
 
@@ -73,6 +75,8 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             @Override
             public void onClick(View v) {
                 sensorManager.unregisterListener(Podometro.this);
+                Intent intent = new Intent(Podometro.this, Tablaprogresopasos.class);
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Usted se ha detenido", Toast.LENGTH_LONG).show();
             }
         });
