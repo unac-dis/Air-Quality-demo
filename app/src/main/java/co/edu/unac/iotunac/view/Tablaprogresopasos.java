@@ -1,9 +1,12 @@
-package co.edu.unac.iotunac;
+package co.edu.unac.iotunac.view;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -15,12 +18,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import co.edu.unac.iotunac.R;
+
 public class Tablaprogresopasos extends AppCompatActivity {
 
     BarChart barChart;
     ArrayList<String> dates;
     Random random;
     ArrayList<BarEntry> barEntries;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +34,16 @@ public class Tablaprogresopasos extends AppCompatActivity {
         setContentView(R.layout.activity_tablaprogresopasos);
 
         barChart = findViewById(R.id.barChart);
+        textView = findViewById(R.id.textinformacion);
+        barChart.setBackgroundColor(Color.LTGRAY);
+        barChart.setGridBackgroundColor(Color.LTGRAY);
+        barChart.animateY(2500);
+        barChart.invalidate();
 
-        createRandomBarGraph("2018/11/01", "2018/11/07");
+        YAxis yAxis = barChart.getAxisRight();
+        yAxis.setEnabled(false);
+
+        createRandomBarGraph("2018/11/04", "2018/11/07");
     }
 
     public void createRandomBarGraph(String Date1, String Date2){
@@ -57,8 +71,9 @@ public class Tablaprogresopasos extends AppCompatActivity {
             random = new Random();
             for(int j = 0; j< dates.size();j++){
                 max = 100f;
-                value = random.nextFloat()*max;
-                barEntries.add(new BarEntry(value,j));
+                value = random.nextFloat()* max;
+                int redondeo = Math.round(value);
+                barEntries.add(new BarEntry(redondeo,j));
             }
 
         }catch(ParseException e){
@@ -66,9 +81,13 @@ public class Tablaprogresopasos extends AppCompatActivity {
         }
 
         BarDataSet barDataSet = new BarDataSet(barEntries,"Fechas");
+        barDataSet.setColor(Color.GREEN);
         BarData barData = new BarData(dates,barDataSet);
+        barData.setValueTextSize(15);
         barChart.setData(barData);
-        barChart.setDescription("Gráfico de barras Pasos");
+        barChart.setDescription("Gráfico de Pasos");
+        barChart.setDescriptionPosition(1030, 1045);
+        barChart.setDescriptionTextSize(15);
 
     }
 

@@ -42,8 +42,8 @@ public class Graficosemanal extends AppCompatActivity {
 
         //creamos una lista de colores
         ArrayList<Integer> colors = new ArrayList<Integer>();
-        colors.add(Color.RED);
         colors.add(Color.GREEN);
+        colors.add(Color.RED);
 
         //seteamos los valores de Y y los colores
         PieDataSet set1 = new PieDataSet(valsY, null);

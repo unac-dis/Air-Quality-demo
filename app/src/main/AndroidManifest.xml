@@ -48,7 +48,7 @@
             android:name=".view.Navigationdrawer"
             android:label="@string/title_activity_navigationdrawer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Tablaprogresopasos"></activity>
+        <activity android:name=".view.Tablaprogresopasos"></activity>
     </application>
 
 </manifest>

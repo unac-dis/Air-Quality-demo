@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.Tablaprogresopasos;
+import co.edu.unac.iotunac.view.Tablaprogresopasos;
 
 public class Podometro extends AppCompatActivity implements SensorEventListener, StepListener {
 
