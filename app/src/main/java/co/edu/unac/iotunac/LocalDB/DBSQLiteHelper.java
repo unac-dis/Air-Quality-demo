@@ -24,7 +24,8 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "user";
-    SQLiteDatabase db =  this.getReadableDatabase();
+    SQLiteDatabase db;
+
 
     public DBSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,6 +43,7 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
     }
     public boolean insertUser(User user)
     {
+         db =  this.getWritableDatabase();
 
         try {
             ContentValues contentValues = new ContentValues();
@@ -61,7 +63,7 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         }
     }
     public void mostrar(){
-
+        db =  this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT email FROM user", null);
         if (c.moveToFirst()) {
             do {

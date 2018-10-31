@@ -24,6 +24,7 @@ public class CalcularIMC extends AppCompatActivity {
     Button button3;
     Double fin, imc;
     String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,7 @@ public class CalcularIMC extends AppCompatActivity {
         editAge = (EditText) findViewById(R.id.editAge);
         editHeight = (EditText) findViewById(R.id.editHeight);
         editWeight = (EditText) findViewById(R.id.editWeight);
-        editsleep = (EditText)  findViewById(R.id.editSleep);
+        editsleep = (EditText) findViewById(R.id.editSleep);
         editpasos = (EditText) findViewById(R.id.editPasos);
 
         button3 = (Button) findViewById(R.id.button3);
@@ -43,21 +44,32 @@ public class CalcularIMC extends AppCompatActivity {
             }
         });
     }
-    public void calcular(){
-        if (editHeight.getText().toString().isEmpty()) {
-            editHeight.setError("campo obligatorio");
+
+    public void calcular() {
+        if (editAge.getText().toString().isEmpty()) {
+            editAge.setError("campo obligatorio");
         }
         if (editWeight.getText().toString().isEmpty()) {
             editWeight.setError("campo obligatorio");
+        }
+        if (editHeight.getText().toString().isEmpty()) {
+            editHeight.setError("campo obligatorio");
+        }
+        if (editsleep.getText().toString().isEmpty()) {
+            editsleep.setError("campo obligatorio");
+        }
+        if (editpasos.getText().toString().isEmpty()) {
+            editpasos.setError("campo obligatorio");
         } else {
-            Double n1 = Double.valueOf(Integer.parseInt((editHeight.getText().toString())));
-            Double n2 = Double.valueOf(Integer.parseInt(editWeight.getText().toString()));
-            Double metro = (n1 / 100);
-            imc = (n2 / (metro * metro));
+            Double Height = Double.valueOf(Integer.parseInt((editHeight.getText().toString())));
+            Double peso = Double.valueOf(Integer.parseInt(editWeight.getText().toString()));
+            Double metro = (Height / 100);
+            imc = (peso / (metro * metro));
             fin = Double.valueOf(Math.round(imc));
         }
     }
-    public void dialog(){
+
+    public void dialog() {
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(CalcularIMC.this);
         dialogo1.setView(R.layout.imc);
         dialogo1.setCancelable(false);
@@ -72,11 +84,8 @@ public class CalcularIMC extends AppCompatActivity {
         dialogo1.setMessage("Su IMC es: " + fin);
         dialogo1.show();
     }
-    public void registrar (){
 
-        DBSQLiteHelper mHelper = new DBSQLiteHelper(getApplicationContext());
-        SQLiteDatabase midb = mHelper.getReadableDatabase();
-        midb = mHelper.getWritableDatabase();
+    public void registrar() {
 
         email = SingInActivity.getTxtEmails();
         TaskRegistro usersRegistry = new TaskRegistro();
@@ -88,8 +97,11 @@ public class CalcularIMC extends AppCompatActivity {
         userRegistry.setHorassueño(Integer.parseInt(editsleep.getText().toString()));
         userRegistry.setNumpasos(Integer.parseInt(editpasos.getText().toString()));
         userRegistry.setImc(fin);
+
         try {
-           String resul = usersRegistry.execute(userRegistry).get();
+            String resul = usersRegistry.execute(userRegistry).get();
+            DBSQLiteHelper guardar = new DBSQLiteHelper(this);
+            guardar.insertUser(userRegistry);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

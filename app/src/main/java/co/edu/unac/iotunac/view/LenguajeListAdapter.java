@@ -20,7 +20,7 @@ public class LenguajeListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final String[] itemname;
-    public static int MILISEGUNDOS_ESPERA = 1000;
+    public static int MILISEGUNDOS_ESPERA = 500;
 
     public LenguajeListAdapter(Activity context, String[] itemname) {
         super(context, R.layout.list_item, itemname);
