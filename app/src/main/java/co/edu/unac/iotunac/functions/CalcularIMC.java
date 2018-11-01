@@ -38,6 +38,7 @@ public class CalcularIMC extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calcular();
+
             }
         });
     }
@@ -73,7 +74,6 @@ public class CalcularIMC extends AppCompatActivity {
         dialogo1.setCancelable(false);
         dialogo1.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogo1, int id) {
-                registrar();
                 Intent intent = new Intent(getApplicationContext(), Navigationdrawer.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -84,7 +84,7 @@ public class CalcularIMC extends AppCompatActivity {
     }
 
     public void registrar() {
-        dialog();
+
         email = SingInActivity.getTxtEmails();
         TaskRegistro usersRegistry = new TaskRegistro();
         User userRegistry = new User();
@@ -98,6 +98,7 @@ public class CalcularIMC extends AppCompatActivity {
 
         try {
             String resul = usersRegistry.execute(userRegistry).get();
+            dialog();
     //        DBSQLiteHelper guardar = new DBSQLiteHelper(this);
       //      guardar.insertUser(userRegistry);
         } catch (InterruptedException e) {

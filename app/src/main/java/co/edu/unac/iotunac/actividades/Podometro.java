@@ -27,7 +27,11 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
     private Button BtnStart;
     private Button BtnStop;
     private Button BtnReiniciar;
-    private static final String TEXT_NUM_STEPS = "Número de Pasos: ";
+    private Button Btnrojo;
+    private Button Btnamarillo;
+    private Button Btnverde;
+    int numeroaleatorioprueba;
+    private static final String TEXT_NUM_STEPS = ": Pasos";
     static int numSteps;
     static double calorias;
 
@@ -61,6 +65,22 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         BtnStart = findViewById(R.id.btn_start);
         BtnStop = findViewById(R.id.btn_stop);
         BtnReiniciar = findViewById(R.id.btn_reiniciar);
+        Btnrojo = findViewById(R.id.btn_rojo);
+        Btnamarillo = findViewById(R.id.btn_amarillo);
+        Btnverde = findViewById(R.id.btn_verde);
+
+        numeroaleatorioprueba = (int) (Math.random() * 100) + 1;
+
+        if (numeroaleatorioprueba > 60){
+            Btnrojo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_rojo));
+            Btnrojo.setText("PELIGRO");
+        }else if (numeroaleatorioprueba > 40 && numeroaleatorioprueba < 60){
+            Btnamarillo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_amarillo));
+            Btnamarillo.setText("ALERTA");
+        }else {
+            Btnverde.setBackgroundDrawable(getDrawable(R.drawable.semaforo_verde));
+            Btnverde.setText("SEGURO");
+        }
 
         BtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,9 +105,9 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             @Override
             public void onClick(View v) {
                 numSteps = 0;
-                TvSteps.setText(TEXT_NUM_STEPS + numSteps);
+                TvSteps.setText(numSteps + TEXT_NUM_STEPS);
                 calorias = 0;
-                Tvcalorias.setText(String.format("Kcal: %.2f", calorias));
+                Tvcalorias.setText(String.format("%.2f : Kcal", calorias));
             }
         });
 
@@ -108,9 +128,9 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
     @Override
     public void step(long timeNs) {
         numSteps++;
-        TvSteps.setText(TEXT_NUM_STEPS + numSteps);
+        TvSteps.setText(numSteps + TEXT_NUM_STEPS);
 
         calorias = numSteps/20;
-        Tvcalorias.setText(String.format("Kcal: %.2f", calorias));
+        Tvcalorias.setText(String.format("%.2f : Kcal", calorias));
     }
 }
