@@ -4,31 +4,6 @@
     tools:showIn="navigation_view">
 
 
-    <item android:title="Ver Resultados" />
-    <item
-        android:id="@+id/prueba"
-        android:title="Hola">
-            <item
-                android:id="@+id/nav_resumenmensual"
-                android:icon="@drawable/ic_resumen_icon"
-                android:title="Resumen Mensual" />
-
-            <item
-                android:id="@+id/nav_resumensemanal"
-                android:icon="@drawable/ic_resumensemanal_icon"
-                android:title="Resumen Semanal" />
-    </item>
-
-    <item android:title="Ver Calidad del aire">
-        <menu>
-
-            <item
-                android:id="@+id/nav_estadodelclima"
-                android:icon="@drawable/ic_clima_icon"
-                android:title="Estado del Clima" />
-
-        </menu>
-    </item>
     <item android:title="Caminar">
         <menu>
 
@@ -44,9 +19,35 @@
 
             <item
                 android:id="@+id/nav_descansar"
-                android:icon="@drawable/ic_depie_icon"
+                android:icon="@drawable/ic_dormirsleep_icon"
                 android:title="Dormir" />
 
+        </menu>
+    </item>
+
+    <item android:title="Ver Calidad del aire">
+        <menu>
+
+            <item
+                android:id="@+id/nav_estadodelclima"
+                android:icon="@drawable/ic_clima_icon"
+                android:title="Estado del Clima" />
+
+        </menu>
+    </item>
+
+
+    <item android:title="Ver Resultados">
+        <menu>
+            <item
+                android:id="@+id/nav_resumenmensual"
+                android:icon="@drawable/ic_resumen_icon"
+                android:title="Resumen Mensual" />
+
+            <item
+                android:id="@+id/nav_resumensemanal"
+                android:icon="@drawable/ic_resumensemanal_icon"
+                android:title="Resumen Semanal" />
         </menu>
     </item>
 

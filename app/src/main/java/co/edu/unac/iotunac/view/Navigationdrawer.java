@@ -17,7 +17,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import co.edu.unac.iotunac.Podometro.Podometro;
+import co.edu.unac.iotunac.actividades.Descanso;
+import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
 

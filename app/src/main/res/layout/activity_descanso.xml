@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/imganochecer"
-    tools:context=".view.Descanso">
+    tools:context=".actividades.Descanso">
 
     <Chronometer
         android:id="@+id/chronometer"

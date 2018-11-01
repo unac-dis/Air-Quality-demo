@@ -22,10 +22,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.net.URI;
+import java.net.URL;
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.functions.BaseActivity;
-import co.edu.unac.iotunac.view.CalcularIMC;
+import co.edu.unac.iotunac.functions.CalcularIMC;
 
 /*** Created by Kevin Ortiz on 25/09/2018.*/
 
@@ -73,9 +75,6 @@ public class SingInActivity extends BaseActivity implements View.OnClickListener
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-       txtEmails = currentUser.getEmail();
-       txtNames = currentUser.getDisplayName();
-       imageViews = currentUser.getPhotoUrl();
         updateUI(currentUser);
     }
 
@@ -106,6 +105,9 @@ public class SingInActivity extends BaseActivity implements View.OnClickListener
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            txtEmails = user.getEmail();
+                            txtNames = user.getDisplayName();
+                            imageViews = user.getPhotoUrl();
                             updateUI(user);
                             final CharSequence myList[] = {"Autorizar"};
                             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(SingInActivity.this);

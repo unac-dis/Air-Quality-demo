@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 
 import java.net.URI;
 
+import co.edu.unac.iotunac.objects.User;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;

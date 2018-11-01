@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
 
-public class Function {
+public class TaskTemperature {
 
     public static boolean isNetworkAvailable(Context context){
         return ((ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;

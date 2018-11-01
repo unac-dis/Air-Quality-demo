@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.functions;
+package co.edu.unac.iotunac.objects;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.view;
+package co.edu.unac.iotunac.actividades;
 
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;

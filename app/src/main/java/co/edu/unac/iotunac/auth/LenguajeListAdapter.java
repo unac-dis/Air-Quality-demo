@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.view;
+package co.edu.unac.iotunac.auth;
 
 import android.app.Activity;
 import android.content.DialogInterface;

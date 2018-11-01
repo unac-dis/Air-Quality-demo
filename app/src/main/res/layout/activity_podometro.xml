@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/imgpodometro"
-    tools:context=".Podometro">
+    tools:context=".actividades.Podometro">
 
     <TextView
         android:id="@+id/tv_steps"

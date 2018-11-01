@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.functions.Function;
+import co.edu.unac.iotunac.functions.TaskTemperature;
 
 public class Estadodelclima extends AppCompatActivity {
 
@@ -85,7 +85,7 @@ public class Estadodelclima extends AppCompatActivity {
     }
 
     public void taskLoadUp(String query) {
-        if (Function.isNetworkAvailable(getApplicationContext())) {
+        if (TaskTemperature.isNetworkAvailable(getApplicationContext())) {
             DownloadWeather task = new DownloadWeather();
             task.execute(query);
         } else {
@@ -103,7 +103,7 @@ public class Estadodelclima extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... args) {
-            String xml = Function.executeGet("http://api.openweathermap.org/data/2.5/weather?q=" + args[0] +
+            String xml = TaskTemperature.executeGet("http://api.openweathermap.org/data/2.5/weather?q=" + args[0] +
                     "&units=metric&appid=" + OPEN_WEATHER_MAP_API);
             return xml;
         }
@@ -124,7 +124,7 @@ public class Estadodelclima extends AppCompatActivity {
                     humidity_field.setText("Humidity: " + main.getString("humidity") + "%");
                     pressure_field.setText("Pressure: " + main.getString("pressure") + " hPa");
                     updatedField.setText(df.format(new Date(json.getLong("dt") * 1000)));
-                    weatherIcon.setText(Html.fromHtml(Function.setWeatherIcon(details.getInt("id"),
+                    weatherIcon.setText(Html.fromHtml(TaskTemperature.setWeatherIcon(details.getInt("id"),
                             json.getJSONObject("sys").getLong("sunrise") * 1000,
                             json.getJSONObject("sys").getLong("sunset") * 1000)));
 

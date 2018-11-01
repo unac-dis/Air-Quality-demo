@@ -1,8 +1,7 @@
-package co.edu.unac.iotunac.view;
+package co.edu.unac.iotunac.functions;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +11,10 @@ import android.widget.EditText;
 
 import java.util.concurrent.ExecutionException;
 
-import co.edu.unac.iotunac.LocalDB.DBSQLiteHelper;
+import co.edu.unac.iotunac.objects.User;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
-import co.edu.unac.iotunac.functions.TaskRegistro;
-import co.edu.unac.iotunac.functions.User;
+import co.edu.unac.iotunac.view.Navigationdrawer;
 
 public class CalcularIMC extends AppCompatActivity {
 
@@ -40,7 +38,6 @@ public class CalcularIMC extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 calcular();
-                dialog();
             }
         });
     }
@@ -61,11 +58,12 @@ public class CalcularIMC extends AppCompatActivity {
         if (editpasos.getText().toString().isEmpty()) {
             editpasos.setError("campo obligatorio");
         } else {
-            Double Height = Double.valueOf(Integer.parseInt((editHeight.getText().toString())));
-            Double peso = Double.valueOf(Integer.parseInt(editWeight.getText().toString()));
+            Double Height = (double) Integer.parseInt((editHeight.getText().toString()));
+            Double peso = (double) Integer.parseInt(editWeight.getText().toString());
             Double metro = (Height / 100);
             imc = (peso / (metro * metro));
-            fin = Double.valueOf(Math.round(imc));
+            fin = (double) Math.round(imc);
+            registrar();
         }
     }
 
@@ -86,7 +84,7 @@ public class CalcularIMC extends AppCompatActivity {
     }
 
     public void registrar() {
-
+        dialog();
         email = SingInActivity.getTxtEmails();
         TaskRegistro usersRegistry = new TaskRegistro();
         User userRegistry = new User();

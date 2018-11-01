@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.functions;
+package co.edu.unac.iotunac.auth;
 
 import android.app.ProgressDialog;
 import android.content.Context;

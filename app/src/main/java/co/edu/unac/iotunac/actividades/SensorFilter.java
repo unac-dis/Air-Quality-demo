@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.Podometro;
+package co.edu.unac.iotunac.actividades;
 
 public class SensorFilter {
 

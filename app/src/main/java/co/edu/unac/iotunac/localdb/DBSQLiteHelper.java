@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.LocalDB;
+package co.edu.unac.iotunac.localdb;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,16 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-import co.edu.unac.iotunac.functions.User;
+import co.edu.unac.iotunac.objects.User;
 
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_EDAD;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_EMAIL;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_ESTATURA;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_HORAS;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_IMC;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_PASOS;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.COLUMN_PESO;
-import static co.edu.unac.iotunac.LocalDB.DBContract.User.TABLE_NAME;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_EDAD;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_EMAIL;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_ESTATURA;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_HORAS;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_IMC;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_PASOS;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_PESO;
+import static co.edu.unac.iotunac.localdb.DBContract.User.TABLE_NAME;
 
 /*** Created by Kevin Ortiz on 30/10/2018.*/
 

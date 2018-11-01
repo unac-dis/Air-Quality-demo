@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.LocalDB;
+package co.edu.unac.iotunac.localdb;
 
 import android.provider.BaseColumns;
 

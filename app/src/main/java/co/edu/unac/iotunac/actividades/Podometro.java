@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.Podometro;
+package co.edu.unac.iotunac.actividades;
 
 import android.content.DialogInterface;
 import android.content.Intent;

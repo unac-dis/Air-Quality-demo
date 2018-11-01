@@ -6,7 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unac.iotunac.functions.User;
+import co.edu.unac.iotunac.objects.User;
 
 import static co.edu.unac.iotunac.LocalRepository.functions.UserContract.UserEntry.USERS_COLUMN_CORREO;
 import static co.edu.unac.iotunac.LocalRepository.functions.UserContract.UserEntry.USERS_COLUMN_EDAD;

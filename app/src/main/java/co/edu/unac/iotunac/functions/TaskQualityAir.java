@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import co.edu.unac.iotunac.objects.Sensor;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
@@ -18,7 +19,7 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 
 /*** Created by Kevin Ortiz on 02/10/2018.*/
 
-public class TaskConsulta extends AsyncTask<Sensor, Void, List<Sensor>> {
+public class TaskQualityAir extends AsyncTask<Sensor, Void, List<Sensor>> {
 
 
     @Override
