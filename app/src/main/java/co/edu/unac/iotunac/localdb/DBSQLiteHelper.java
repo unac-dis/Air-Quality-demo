@@ -22,8 +22,8 @@ import static co.edu.unac.iotunac.localdb.DBContract.User.TABLE_NAME;
 
 public class DBSQLiteHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "user";
+    private static final int DATABASE_VERSION = 1;
     SQLiteDatabase db;
 
 
@@ -41,10 +41,9 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
-    public boolean insertUser(User user)
-    {
-         db =  this.getWritableDatabase();
 
+    public boolean insertUser(User user) {
+        db = this.getWritableDatabase();
         try {
             ContentValues contentValues = new ContentValues();
             contentValues.put(COLUMN_EMAIL, user.getCorreo());
@@ -54,21 +53,18 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
             contentValues.put(COLUMN_PASOS, user.getNumpasos());
             contentValues.put(COLUMN_HORAS, user.getHorassueño());
             contentValues.put(COLUMN_EDAD, user.getEdad());
-            long id =db.insert(TABLE_NAME, null, contentValues);
+            long id = db.insert(TABLE_NAME, null, contentValues);
             db.close();
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
             return false;
         }
     }
-    public void mostrar(){
-        db =  this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT email FROM user", null);
-        if (c.moveToFirst()) {
-            do {
-                String email = c.getString(0);
-                } while(c.moveToNext());
-        }
+
+    public String getUserByEmail(String email) {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT email FROM user where email = '" + email + "'", null);
+        return c.moveToFirst() ? c.getString(0) : null;
     }
 }

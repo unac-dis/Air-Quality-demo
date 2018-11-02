@@ -2,15 +2,18 @@ package co.edu.unac.iotunac.functions;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.hardware.camera2.params.TonemapCurve;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
+import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.objects.User;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
@@ -43,21 +46,15 @@ public class CalcularIMC extends AppCompatActivity {
         });
     }
 
+    public boolean isNullOrEmpty(EditText editText) {
+        return editText.getText().toString() == null || editText.getText().toString().isEmpty();
+    }
+
     public void calcular() {
-        if (editAge.getText().toString().isEmpty()) {
+        if (isNullOrEmpty(editAge) || isNullOrEmpty(editWeight) || isNullOrEmpty(editHeight)
+                || isNullOrEmpty(editsleep) || isNullOrEmpty(editpasos)) {
             editAge.setError("campo obligatorio");
-        }
-        if (editWeight.getText().toString().isEmpty()) {
-            editWeight.setError("campo obligatorio");
-        }
-        if (editHeight.getText().toString().isEmpty()) {
-            editHeight.setError("campo obligatorio");
-        }
-        if (editsleep.getText().toString().isEmpty()) {
-            editsleep.setError("campo obligatorio");
-        }
-        if (editpasos.getText().toString().isEmpty()) {
-            editpasos.setError("campo obligatorio");
+            Toast.makeText(this, "Por Favor Ingrese Todo Los Campos Requidos", Toast.LENGTH_SHORT).show();
         } else {
             Double Height = (double) Integer.parseInt((editHeight.getText().toString()));
             Double peso = (double) Integer.parseInt(editWeight.getText().toString());
@@ -86,7 +83,7 @@ public class CalcularIMC extends AppCompatActivity {
     public void registrar() {
 
         email = SingInActivity.getTxtEmails();
-        TaskRegistro usersRegistry = new TaskRegistro();
+        TaskRegistro task = new TaskRegistro();
         User userRegistry = new User();
         userRegistry.setCorreo(email);
         userRegistry.setEstatura(Double.valueOf(editHeight.getText().toString()));
@@ -97,13 +94,17 @@ public class CalcularIMC extends AppCompatActivity {
         userRegistry.setImc(fin);
 
         try {
-            String resul = usersRegistry.execute(userRegistry).get();
+            String resul = task.execute(userRegistry).get();
             dialog();
-    //        DBSQLiteHelper guardar = new DBSQLiteHelper(this);
-      //      guardar.insertUser(userRegistry);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+            DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
+            baseDatos.insertUser(userRegistry);
+
+            String result = baseDatos.getUserByEmail(userRegistry.getCorreo());
+            System.out.println(result);
+            if (result == null) {
+                Toast.makeText(this, "Esa mierda no funcionó", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
