@@ -2,6 +2,7 @@ package co.edu.unac.iotunac.actividades;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,7 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.functions.TaskQualityAir;
+import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.view.Tablaprogresopasos;
 
 public class Podometro extends AppCompatActivity implements SensorEventListener, StepListener {
@@ -23,7 +28,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
     private TextView Tvcalorias;
     private StepDetector simpleStepDetector;
     private SensorManager sensorManager;
-    private Sensor accel;
+    private android.hardware.Sensor accel;
     private Button BtnStart;
     private Button BtnStop;
     private Button BtnReiniciar;
@@ -34,6 +39,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
     private static final String TEXT_NUM_STEPS = ": Pasos";
     static int numSteps;
     static double calorias;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +75,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         Btnamarillo = findViewById(R.id.btn_amarillo);
         Btnverde = findViewById(R.id.btn_verde);
 
-        numeroaleatorioprueba = (int) (Math.random() * 100) + 1;
+        numeroaleatorioprueba = 1;
 
         if (numeroaleatorioprueba > 60){
             Btnrojo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_rojo));
@@ -133,4 +139,5 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         calorias = numSteps/20;
         Tvcalorias.setText(String.format("%.2f : Kcal", calorias));
     }
+
 }

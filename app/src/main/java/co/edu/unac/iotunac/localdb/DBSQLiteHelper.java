@@ -67,4 +67,10 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery("SELECT email FROM user where email = '" + email + "'", null);
         return c.moveToFirst() ? c.getString(0) : null;
     }
+    public int getUserByPasos(int pasos) {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT pasos FROM user where pasos = '" + pasos + "'", null);
+        return c.moveToFirst() ? c.getInt(0) : null;
+    }
+
 }

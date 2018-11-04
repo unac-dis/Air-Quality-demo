@@ -32,6 +32,10 @@
                 android:id="@+id/nav_estadodelclima"
                 android:icon="@drawable/ic_clima_icon"
                 android:title="Estado del Clima" />
+            <item
+                android:id="@+id/nav_calidaddelaire"
+                android:icon="@drawable/ic_clima_icon"
+                android:title="Calidad del aire" />
 
         </menu>
     </item>

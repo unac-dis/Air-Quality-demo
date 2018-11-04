@@ -1,5 +1,6 @@
 package co.edu.unac.iotunac.actividades;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Chronometer;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 
 public class Descanso extends AppCompatActivity {
 

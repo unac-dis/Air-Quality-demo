@@ -25,6 +25,7 @@ public class CalcularIMC extends AppCompatActivity {
     Button button3;
     Double fin, imc;
     String email;
+    static int pasos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +48,20 @@ public class CalcularIMC extends AppCompatActivity {
     }
 
     public boolean isNullOrEmpty(EditText editText) {
-        return editText.getText().toString() == null || editText.getText().toString().isEmpty();
+        return !(editText.getText().toString() != null && !editText.getText().toString().isEmpty());
+
     }
 
     public void calcular() {
         if (isNullOrEmpty(editAge) || isNullOrEmpty(editWeight) || isNullOrEmpty(editHeight)
                 || isNullOrEmpty(editsleep) || isNullOrEmpty(editpasos)) {
+            editHeight.setError("campo obligatorio");
             editAge.setError("campo obligatorio");
-            Toast.makeText(this, "Por Favor Ingrese Todo Los Campos Requidos", Toast.LENGTH_SHORT).show();
+            editWeight.setError("campo obligatorio");
+            editsleep.setError("campo obligatorio");
+            editpasos.setError("campo obligatorio");
+
+            Toast.makeText(this, "Por Favor Ingrese Todos Los Campos Requeridos", Toast.LENGTH_SHORT).show();
         } else {
             Double Height = (double) Integer.parseInt((editHeight.getText().toString()));
             Double peso = (double) Integer.parseInt(editWeight.getText().toString());
@@ -95,14 +102,17 @@ public class CalcularIMC extends AppCompatActivity {
 
         try {
             String resul = task.execute(userRegistry).get();
-            dialog();
+
             DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
             baseDatos.insertUser(userRegistry);
 
             String result = baseDatos.getUserByEmail(userRegistry.getCorreo());
-            System.out.println(result);
+            pasos = baseDatos.getUserByPasos(userRegistry.getNumpasos());
+
+            Toast.makeText(this, "Registrado " + result + "pasos " + pasos, Toast.LENGTH_SHORT).show();
+            dialog();
             if (result == null) {
-                Toast.makeText(this, "Esa mierda no funcionó", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "DB Local not found", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             e.printStackTrace();

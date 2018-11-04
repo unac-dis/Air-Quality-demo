@@ -1,5 +1,6 @@
 package co.edu.unac.iotunac.functions;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -7,10 +8,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import co.edu.unac.iotunac.objects.Sensor;
+import co.edu.unac.iotunac.objects.AirStatus;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
@@ -19,35 +19,34 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 
 /*** Created by Kevin Ortiz on 02/10/2018.*/
 
-public class TaskQualityAir extends AsyncTask<Sensor, Void, List<Sensor>> {
+public class TaskQualityAir extends AsyncTask<String, Integer, List<AirStatus>> {
+    private Context mContext;
+
+    public TaskQualityAir(Context context) {
+        mContext = context;
+    }
 
 
     @Override
-    protected List<Sensor> doInBackground(Sensor... sensors) {
+    protected List<AirStatus> doInBackground(String... String) {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpGet del = new HttpGet("http://170.238.226.93/info/see/");
+        HttpGet del = new HttpGet("http://170.238.226.93/info/status");
         del.setHeader("content-type", "application/json");
 
         try {
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());
+            JSONObject respJSON = new JSONObject(respStr);
+            List<AirStatus> productsList = new ArrayList<>();
 
-            JSONArray respJSON = new JSONArray(respStr);
 
-            List<Sensor> productsList = new ArrayList<>();
-
-            for (int i = 0; i < respJSON.length(); i++) {
-                JSONObject obj = respJSON.getJSONObject(i);
-
-                Sensor sensor = new Sensor();
-                sensor.setFecha((Date) obj.get("fecha"));
+                JSONObject obj = respJSON.getJSONObject(respStr);
+                AirStatus sensor = new AirStatus();
+                sensor.setStatus(obj.getString("status"));
                 sensor.setTemperatura(obj.getDouble("temperatura"));
                 sensor.setHumedad(obj.getDouble("humedad"));
                 sensor.setCo2(obj.getDouble("co2"));
-                sensor.setSensor(obj.getInt("idsensor"));
-
                 productsList.add(sensor);
-            }
 
             return productsList;
         } catch (Exception ex) {
@@ -55,5 +54,12 @@ public class TaskQualityAir extends AsyncTask<Sensor, Void, List<Sensor>> {
         }
         return new ArrayList<>();
     }
-
+    @Override
+    protected void onPostExecute(List<AirStatus> status) {
+        try {
+            super.onPostExecute(status);
+        }catch (Exception e) {
+            System.out.print(e.toString());
+        }
+    }
 }

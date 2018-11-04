@@ -17,10 +17,15 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.unac.iotunac.actividades.Descanso;
 import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
+import co.edu.unac.iotunac.functions.TaskQualityAir;
+import co.edu.unac.iotunac.objects.AirStatus;
 
 public class Navigationdrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +33,32 @@ public class Navigationdrawer extends AppCompatActivity
     TextView txtEmail;
     ImageView imageView;
 
+public void airquality(){
+
+    TaskQualityAir task = new TaskQualityAir(getApplicationContext());
+
+    AirStatus status = new AirStatus();
+    status.getStatus();
+    status.getCo2();
+    String  resul = null;
+    try {
+
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+
+    final AlertDialog.Builder info = new AlertDialog.Builder(this);
+    info.setIcon(R.drawable.ic_informacion_icon);
+    info.setTitle("Status");
+    info.setMessage("La Calidad del aires es: "+resul);
+    info.setCancelable(false);
+    info.setPositiveButton("Cerrar", null);
+    info.show();
+
+
+}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +134,10 @@ public class Navigationdrawer extends AppCompatActivity
         } else if (id == R.id.nav_estadodelclima) {
             Intent intent = new Intent(Navigationdrawer.this, Estadodelclima.class);
             startActivity(intent);
-        } else if (id == R.id.nav_descansar) {
+        }else if (id == R.id.nav_calidaddelaire) {
+            airquality();
+        }
+        else if (id == R.id.nav_descansar) {
             Intent intent = new Intent(Navigationdrawer.this, Descanso.class);
             startActivity(intent);
         }  else if (id == R.id.nav_salir) {
