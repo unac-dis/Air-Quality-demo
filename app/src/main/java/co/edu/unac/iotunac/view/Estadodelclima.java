@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.functions.TaskTemperature;
+import co.edu.unac.iotunac.task.TaskTemperature;
 
 public class Estadodelclima extends AppCompatActivity {
 

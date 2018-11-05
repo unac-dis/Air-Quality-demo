@@ -2,7 +2,6 @@ package co.edu.unac.iotunac.actividades;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -15,15 +14,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.functions.TaskQualityAir;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
+import co.edu.unac.iotunac.objects.Logro;
 import co.edu.unac.iotunac.view.Tablaprogresopasos;
 
 public class Podometro extends AppCompatActivity implements SensorEventListener, StepListener {
 
+    private static final String TEXT_NUM_STEPS = ": Pasos";
+    static int numSteps;
+    static double calorias;
+    int numeroaleatorioprueba;
     private TextView TvSteps;
     private TextView Tvcalorias;
     private StepDetector simpleStepDetector;
@@ -35,11 +38,14 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
     private Button Btnrojo;
     private Button Btnamarillo;
     private Button Btnverde;
-    int numeroaleatorioprueba;
-    private static final String TEXT_NUM_STEPS = ": Pasos";
-    static int numSteps;
-    static double calorias;
 
+    public static int getNumSteps() {
+        return numSteps;
+    }
+
+    public static void setNumSteps(int numSteps) {
+        Podometro.numSteps = numSteps;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +83,13 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
 
         numeroaleatorioprueba = 1;
 
-        if (numeroaleatorioprueba > 60){
+        if (numeroaleatorioprueba > 60) {
             Btnrojo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_rojo));
             Btnrojo.setText("PELIGRO");
-        }else if (numeroaleatorioprueba > 40 && numeroaleatorioprueba < 60){
+        } else if (numeroaleatorioprueba > 40 && numeroaleatorioprueba < 60) {
             Btnamarillo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_amarillo));
             Btnamarillo.setText("ALERTA");
-        }else {
+        } else {
             Btnverde.setBackgroundDrawable(getDrawable(R.drawable.semaforo_verde));
             Btnverde.setText("SEGURO");
         }
@@ -101,6 +107,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             @Override
             public void onClick(View v) {
                 sensorManager.unregisterListener(Podometro.this);
+                insertLogro();
                 Intent intent = new Intent(Podometro.this, Tablaprogresopasos.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Usted se ha detenido", Toast.LENGTH_LONG).show();
@@ -118,6 +125,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         });
 
     }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -136,8 +144,16 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         numSteps++;
         TvSteps.setText(numSteps + TEXT_NUM_STEPS);
 
-        calorias = numSteps/20;
+        calorias = numSteps / 20;
         Tvcalorias.setText(String.format("%.2f : Kcal", calorias));
     }
 
+    public void insertLogro() {
+        DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
+        Logro logro = new Logro();
+        logro.setFecha(Calendar.getInstance().getTime());
+        logro.setPasoslogrados(numSteps);
+        logro.setHoraslogradas(0);
+        baseDatos.insertLogro(logro);
+    }
 }

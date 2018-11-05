@@ -10,8 +10,12 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
+import co.edu.unac.iotunac.objects.Logro;
+import co.edu.unac.iotunac.objects.User;
 
 public class Graficodiario extends AppCompatActivity {
 
@@ -19,6 +23,8 @@ public class Graficodiario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graficodiario);
+
+        DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
 
         PieChart pieChart;
         pieChart = findViewById(R.id.pieChartDiario);
@@ -31,14 +37,16 @@ public class Graficodiario extends AppCompatActivity {
         pieChart.setDescriptionTextSize(20f);
 
         //creamos una lista para los valores Y
+        User user = baseDatos.findUser();
+        Logro logro = baseDatos.getLogroByDate(Calendar.getInstance().getTime());
         ArrayList<Entry> valsY = new ArrayList<Entry>();
-        valsY.add(new Entry(20*100/25,0));
-        valsY.add(new Entry(50*10/25,1));
+        valsY.add(new Entry(logro.getPasoslogrados() *100/25,0));
+        valsY.add(new Entry(user.getNumpasos() *10/25,1));
 
         //creamos una lista para los valores X
         ArrayList<String> valsX = new ArrayList<String>();
-        valsX.add("Tiempo de Actividad");
-        valsX.add("Tiempo de Descanso");
+        valsX.add("Pasos logrados");
+        valsX.add("Meta");
 
         //creamos una lista de colores
         ArrayList<Integer> colors = new ArrayList<Integer>();

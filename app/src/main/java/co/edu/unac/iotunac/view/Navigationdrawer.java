@@ -2,6 +2,7 @@ package co.edu.unac.iotunac.view;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,14 +18,11 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import co.edu.unac.iotunac.actividades.Descanso;
 import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
-import co.edu.unac.iotunac.functions.TaskQualityAir;
+import co.edu.unac.iotunac.task.AirQualityTask;
 import co.edu.unac.iotunac.objects.AirStatus;
 
 public class Navigationdrawer extends AppCompatActivity
@@ -33,32 +31,25 @@ public class Navigationdrawer extends AppCompatActivity
     TextView txtEmail;
     ImageView imageView;
 
-public void airquality(){
+    public void airquality() {
 
-    TaskQualityAir task = new TaskQualityAir(getApplicationContext());
+        AirQualityTask task = new AirQualityTask(getApplicationContext());
+        AirStatus airStatus = new AirStatus();
+        try {
+            airStatus = task.execute("").get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-    AirStatus status = new AirStatus();
-    status.getStatus();
-    status.getCo2();
-    String  resul = null;
-    try {
-
-
-    } catch (Exception e) {
-        e.printStackTrace();
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.ic_informacion_icon)
+                .setTitle("Status")
+                .setMessage("La Calidad del aires es: " + airStatus.getStatus())
+                .setCancelable(false)
+                .setPositiveButton("Cerrar", null)
+                .show();
     }
 
-
-    final AlertDialog.Builder info = new AlertDialog.Builder(this);
-    info.setIcon(R.drawable.ic_informacion_icon);
-    info.setTitle("Status");
-    info.setMessage("La Calidad del aires es: "+resul);
-    info.setCancelable(false);
-    info.setPositiveButton("Cerrar", null);
-    info.show();
-
-
-}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,13 +66,13 @@ public void airquality(){
         navigationView.setNavigationItemSelectedListener(this);
         txtName = navigationView.getHeaderView(0).findViewById(R.id.nombreuser);
         txtEmail = navigationView.getHeaderView(0).findViewById(R.id.usuarioemail);
-        imageView  = navigationView.getHeaderView(0).findViewById(R.id.imageprofile);
-                String personName = SingInActivity.getTxtNames();
-                Uri personPhotoUrl = SingInActivity.getImageViews();
-                String email = SingInActivity.getTxtEmails();
-                txtName.setText(personName);
-                txtEmail.setText(email);
-            Picasso.with(this).load(personPhotoUrl).into(imageView);
+        imageView = navigationView.getHeaderView(0).findViewById(R.id.imageprofile);
+        String personName = SingInActivity.getTxtNames();
+        Uri personPhotoUrl = SingInActivity.getImageViews();
+        String email = SingInActivity.getTxtEmails();
+        txtName.setText(personName);
+        txtEmail.setText(email);
+        Picasso.with(this).load(personPhotoUrl).into(imageView);
 
     }
 
@@ -103,7 +94,7 @@ public void airquality(){
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-         int id = item.getItemId();
+        int id = item.getItemId();
 
         if (id == R.id.action_settings) {
             final AlertDialog.Builder informaciondesarrollador = new AlertDialog.Builder(this);
@@ -128,19 +119,18 @@ public void airquality(){
         } else if (id == R.id.nav_resumenmensual) {
             Intent intent = new Intent(Navigationdrawer.this, Graficomensual.class);
             startActivity(intent);
-        }else if (id == R.id.nav_podometro) {
+        } else if (id == R.id.nav_podometro) {
             Intent intent = new Intent(Navigationdrawer.this, Podometro.class);
             startActivity(intent);
         } else if (id == R.id.nav_estadodelclima) {
             Intent intent = new Intent(Navigationdrawer.this, Estadodelclima.class);
             startActivity(intent);
-        }else if (id == R.id.nav_calidaddelaire) {
+        } else if (id == R.id.nav_calidaddelaire) {
             airquality();
-        }
-        else if (id == R.id.nav_descansar) {
+        } else if (id == R.id.nav_descansar) {
             Intent intent = new Intent(Navigationdrawer.this, Descanso.class);
             startActivity(intent);
-        }  else if (id == R.id.nav_salir) {
+        } else if (id == R.id.nav_salir) {
             finish();
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);

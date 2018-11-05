@@ -1,4 +1,4 @@
-package co.edu.unac.iotunac.functions;
+package co.edu.unac.iotunac.task;
 
 import android.content.Context;
 import android.os.AsyncTask;

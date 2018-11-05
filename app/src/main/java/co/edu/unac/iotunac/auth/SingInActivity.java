@@ -22,21 +22,18 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import android.widget.ImageView;
-import android.widget.TextView;
-import java.net.URI;
-import java.net.URL;
+
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.functions.CalcularIMC;
+import co.edu.unac.iotunac.task.CalcularIMC;
 
 /*** Created by Kevin Ortiz on 25/09/2018.*/
 
 public class SingInActivity extends BaseActivity implements View.OnClickListener {
-    static  String txtNames;
-    static  String txtEmails;
-    static Uri imageViews;
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
+    static String txtNames;
+    static String txtEmails;
+    static Uri imageViews;
     static FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -133,6 +130,7 @@ public class SingInActivity extends BaseActivity implements View.OnClickListener
                     }
                 });
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);

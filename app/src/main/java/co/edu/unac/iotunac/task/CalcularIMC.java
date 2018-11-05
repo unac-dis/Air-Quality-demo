@@ -1,8 +1,7 @@
-package co.edu.unac.iotunac.functions;
+package co.edu.unac.iotunac.task;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.hardware.camera2.params.TonemapCurve;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.concurrent.ExecutionException;
 
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.objects.User;
@@ -25,7 +22,6 @@ public class CalcularIMC extends AppCompatActivity {
     Button button3;
     Double fin, imc;
     String email;
-    static int pasos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,15 +101,7 @@ public class CalcularIMC extends AppCompatActivity {
 
             DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
             baseDatos.insertUser(userRegistry);
-
-            String result = baseDatos.getUserByEmail(userRegistry.getCorreo());
-            pasos = baseDatos.getUserByPasos(userRegistry.getNumpasos());
-
-            Toast.makeText(this, "Registrado " + result + "pasos " + pasos, Toast.LENGTH_SHORT).show();
             dialog();
-            if (result == null) {
-                Toast.makeText(this, "DB Local not found", Toast.LENGTH_SHORT).show();
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }

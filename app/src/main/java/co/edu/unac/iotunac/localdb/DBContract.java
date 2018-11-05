@@ -6,7 +6,8 @@ import android.provider.BaseColumns;
 
 public class DBContract {
 
-      private DBContract() { }
+    private DBContract() {
+    }
 
     public static class User implements BaseColumns {
         public static final String TABLE_NAME = "user";
@@ -22,12 +23,30 @@ public class DBContract {
         public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_EMAIL+ " TEXT, " +
-                COLUMN_IMC+ " DOUBLE, " +
-                COLUMN_ESTATURA+ " DOUBLE, " +
-                COLUMN_PESO+ " DOUBLE, " +
-                COLUMN_HORAS+ " INTEGER, " +
+                COLUMN_EMAIL + " TEXT, " +
+                COLUMN_IMC + " DOUBLE, " +
+                COLUMN_ESTATURA + " DOUBLE, " +
+                COLUMN_PESO + " DOUBLE, " +
+                COLUMN_HORAS + " INTEGER, " +
                 COLUMN_PASOS + " INTEGER, " +
                 COLUMN_EDAD + " INTEGER" + ")";
+
+    }
+
+    public static class Logro implements BaseColumns {
+
+        public static final String TABLE_NAME = "logro";
+
+        public static final String COLUMN_DATE = "fecha";
+        public static final String COLUMN_PASOSL = "pasoslogrados";
+        public static final String COLUMN_HORASL = "horaslogradas";
+
+
+        public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                TABLE_NAME + " (" +
+                _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_DATE + " TEXT, " +
+                COLUMN_PASOSL + " INTEGER, " +
+                COLUMN_HORASL + " INTEGER" + ")";
     }
 }

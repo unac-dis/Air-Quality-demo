@@ -47,6 +47,6 @@
     <string name="pausar">Pausar</string>
     <string name="despertar">Despertar</string>
 
-    <string name="informaciontablapasos">En el siguiente grafico se visualiza los pasos que da diariamente, de acuerdo a sus metas.</string>
+    <string name="informaciontablapasos">En el siguiente grafico se visualiza los pasos que da diariamente, de acuerdo a sus logro.</string>
     <string name="titulograficopasos">GRÁFICO PASOS</string>
 </resources>

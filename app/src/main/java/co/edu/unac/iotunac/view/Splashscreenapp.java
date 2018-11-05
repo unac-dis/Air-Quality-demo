@@ -10,6 +10,8 @@ import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
+
 /**
  * Created by Brayan Torres on 25/08/2018.
  */
@@ -44,7 +46,15 @@ public class Splashscreenapp extends AwesomeSplash {
 
     @Override
     public void animationsFinished() {
-        startActivity(new Intent(Splashscreenapp.this, Test.class));
+        if (userAlreadyExist())
+            startActivity(new Intent(Splashscreenapp.this, Navigationdrawer.class));
+        else
+            startActivity(new Intent(Splashscreenapp.this, TestActivity.class));
         finish();
+    }
+
+    private boolean userAlreadyExist() {
+        DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
+        return baseDatos.findUser().getCorreo() != null;
     }
 }

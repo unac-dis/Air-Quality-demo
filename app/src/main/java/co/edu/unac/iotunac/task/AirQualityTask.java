@@ -1,10 +1,9 @@
-package co.edu.unac.iotunac.functions;
+package co.edu.unac.iotunac.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -19,16 +18,15 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 
 /*** Created by Kevin Ortiz on 02/10/2018.*/
 
-public class TaskQualityAir extends AsyncTask<String, Integer, List<AirStatus>> {
+public class AirQualityTask extends AsyncTask<String, Integer, AirStatus> {
     private Context mContext;
 
-    public TaskQualityAir(Context context) {
+    public AirQualityTask(Context context) {
         mContext = context;
     }
 
-
     @Override
-    protected List<AirStatus> doInBackground(String... String) {
+    protected AirStatus doInBackground(String... voids) {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet del = new HttpGet("http://170.238.226.93/info/status");
         del.setHeader("content-type", "application/json");
@@ -36,29 +34,19 @@ public class TaskQualityAir extends AsyncTask<String, Integer, List<AirStatus>> 
         try {
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());
-            JSONObject respJSON = new JSONObject(respStr);
-            List<AirStatus> productsList = new ArrayList<>();
-
-
-                JSONObject obj = respJSON.getJSONObject(respStr);
-                AirStatus sensor = new AirStatus();
-                sensor.setStatus(obj.getString("status"));
-                sensor.setTemperatura(obj.getDouble("temperatura"));
-                sensor.setHumedad(obj.getDouble("humedad"));
-                sensor.setCo2(obj.getDouble("co2"));
-                productsList.add(sensor);
-
-            return productsList;
+            JSONObject json = new JSONObject(respStr);
+            return new AirStatus(json.getString("status"), json.getDouble("humedad"), json.getDouble("temperatura"), json.getDouble("co2"));
         } catch (Exception ex) {
             Log.e("ServicioRest", "Error!", ex);
         }
-        return new ArrayList<>();
+        return new AirStatus();
     }
+
     @Override
-    protected void onPostExecute(List<AirStatus> status) {
+    protected void onPostExecute(AirStatus status) {
         try {
             super.onPostExecute(status);
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.print(e.toString());
         }
     }

@@ -16,7 +16,7 @@ import co.edu.unac.iotunac.R;
 
 /*** Created by Kevin Ortiz on 19/08/2018.*/
 
-public class Test extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
     Button ok;
     ListView list;
     private String questions[] = new String[]
@@ -57,16 +57,16 @@ public class Test extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder aviso = new AlertDialog.Builder(Test.this);
+                AlertDialog.Builder aviso = new AlertDialog.Builder(TestActivity.this);
                 aviso.setTitle("¡Atención!");
                 aviso.setCancelable(false);
                 aviso.setMessage(R.string.afirma);
                 aviso.setCancelable(false);
                 aviso.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogo1, int id) {
-                        Intent intent = new Intent(Test.this, SingInActivity.class);
+                        Intent intent = new Intent(TestActivity.this, SingInActivity.class);
                         startActivity(intent);
-                        Toast t = Toast.makeText(Test.this, "Ahora puedes iniciar sesión", Toast.LENGTH_SHORT);
+                        Toast t = Toast.makeText(TestActivity.this, "Ahora puedes iniciar sesión", Toast.LENGTH_SHORT);
                         t.show();
                     }
                 });
