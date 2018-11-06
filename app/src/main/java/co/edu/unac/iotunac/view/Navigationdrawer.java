@@ -30,6 +30,15 @@ public class Navigationdrawer extends AppCompatActivity
     TextView txtName;
     TextView txtEmail;
     ImageView imageView;
+    static double co;
+
+    public static double getCo() {
+        return co;
+    }
+
+    public static void setCo(double co) {
+        Navigationdrawer.co = co;
+    }
 
     public void airquality() {
 
@@ -37,6 +46,7 @@ public class Navigationdrawer extends AppCompatActivity
         AirStatus airStatus = new AirStatus();
         try {
             airStatus = task.execute("").get();
+            co  =    airStatus.getCo2();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,7 +54,7 @@ public class Navigationdrawer extends AppCompatActivity
         new AlertDialog.Builder(this)
                 .setIcon(R.drawable.ic_informacion_icon)
                 .setTitle("Status")
-                .setMessage("La Calidad del aires es: " + airStatus.getStatus())
+                .setMessage("La Calidad del aires es: " + airStatus.getStatus()+" con una medida de: "+airStatus.getCo2()+" ppm")
                 .setCancelable(false)
                 .setPositiveButton("Cerrar", null)
                 .show();

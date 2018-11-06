@@ -28,7 +28,9 @@
     <string name="logeando">Iniciando sesión</string>
     <string name="salir">"Apreciado usuario por motivos de su bienestar físico, le recomendamos consultar un médico antes de iniciar un plan de actividad física</string>
     <string name="action_settings">Acerca de</string>
-
+    <string name="rojo">"Significa que la concentración de dióxido de carbono en el aire supera las 150 ppm, que ya convierte al aire en nocivo para la salud."</string>
+    <string name="amarillo">"Significa que la concentración de dióxido de carbono en el aire supera las 100 ppm, que nos indica una alerta en el aumento de riesgos para la salud."</string>
+    <string name="verde">"Significa que la concentración de dióxido de carbono en el aire está por debajo de las 100 ppm, que lo mantiene como aire inofensivo para la salud."</string>
     <string name="title">Air Quality...</string>
     <string name="Registro">Registra tu información</string>
     <string name="title_activity_navigationdrawer">Inicio</string>
@@ -49,4 +51,11 @@
 
     <string name="informaciontablapasos">En el siguiente grafico se visualiza los pasos que da diariamente, de acuerdo a sus logro.</string>
     <string name="titulograficopasos">GRÁFICO PASOS</string>
+    <string-array name="descanso_item">
+        <item>Bueno y agradable</item>
+        <item>Bueno</item>
+        <item>Regular</item>
+        <item>Aceptable</item>
+        <item>Malo</item>
+    </string-array>
 </resources>

@@ -19,6 +19,7 @@ import java.util.Calendar;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.objects.Logro;
+import co.edu.unac.iotunac.view.Navigationdrawer;
 import co.edu.unac.iotunac.view.Tablaprogresopasos;
 
 public class Podometro extends AppCompatActivity implements SensorEventListener, StepListener {
@@ -26,7 +27,6 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
     private static final String TEXT_NUM_STEPS = ": Pasos";
     static int numSteps;
     static double calorias;
-    int numeroaleatorioprueba;
     private TextView TvSteps;
     private TextView Tvcalorias;
     private StepDetector simpleStepDetector;
@@ -81,12 +81,12 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         Btnamarillo = findViewById(R.id.btn_amarillo);
         Btnverde = findViewById(R.id.btn_verde);
 
-        numeroaleatorioprueba = 1;
+        Double state = Navigationdrawer.getCo();
 
-        if (numeroaleatorioprueba > 60) {
+        if (state > 60) {
             Btnrojo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_rojo));
             Btnrojo.setText("PELIGRO");
-        } else if (numeroaleatorioprueba > 40 && numeroaleatorioprueba < 60) {
+        } else if (state > 40 && state < 60) {
             Btnamarillo.setBackgroundDrawable(getDrawable(R.drawable.semaforo_amarillo));
             Btnamarillo.setText("ALERTA");
         } else {
@@ -99,7 +99,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             public void onClick(View v) {
                 numSteps = 0;
                 sensorManager.registerListener(Podometro.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
-                Toast.makeText(getApplicationContext(), "Ya puede empezar a caminar", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Inicia el conteo de pasos", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -121,6 +121,42 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
                 TvSteps.setText(numSteps + TEXT_NUM_STEPS);
                 calorias = 0;
                 Tvcalorias.setText(String.format("%.2f : Kcal", calorias));
+            }
+        });
+        Btnrojo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(Podometro.this)
+                        .setIcon(R.drawable.ic_informacion_icon)
+                        .setTitle("Status")
+                        .setMessage(R.string.rojo)
+                        .setCancelable(false)
+                        .setPositiveButton("Cerrar", null)
+                        .show();
+            }
+        });
+        Btnamarillo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(Podometro.this)
+                        .setIcon(R.drawable.ic_informacion_icon)
+                        .setTitle("Status")
+                        .setMessage(R.string.amarillo)
+                        .setCancelable(false)
+                        .setPositiveButton("Cerrar", null)
+                        .show();
+            }
+        });
+        Btnverde.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(Podometro.this)
+                        .setIcon(R.drawable.ic_informacion_icon)
+                        .setTitle("Info")
+                        .setMessage(R.string.verde)
+                        .setCancelable(false)
+                        .setPositiveButton("cerrar", null)
+                        .show();
             }
         });
 

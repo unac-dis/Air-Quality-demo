@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,14 +95,14 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
 
     private User buildUser(Cursor c) {
         User user = new User();
-        int i = 0;
-        user.setCorreo(c.getString(i++));
-        user.setEdad(c.getInt(i++));
-        user.setPeso(c.getDouble(i++));
-        user.setEstatura(c.getDouble(i++));
-        user.setHorassueño(c.getInt(i++));
-        user.setNumpasos(c.getInt(i++));
-        user.setNumpasos(c.getInt(i));
+       // int i = 0;
+        user.setCorreo(c.getString(0));
+        user.setEdad(c.getInt(1));
+        user.setPeso(c.getDouble(2));
+        user.setEstatura(c.getDouble(3));
+        user.setHorassueño(c.getInt(4));
+        user.setNumpasos(c.getInt(5));
+        user.setNumpasos(c.getInt(6));
         return user;
     }
 
@@ -124,5 +122,20 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             return Calendar.getInstance().getTime();
         }
+    }
+    public Double getUserByImc() {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT imc FROM user", null);
+        return c.moveToFirst() ? c.getDouble(0) : null;
+    }
+    public int getUserbylogros() {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT sum(pasoslogrados) FROM logro", null);
+        return c.moveToFirst() ? c.getInt(0) : null;
+    }
+    public int getUserBypasos() {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT pasos FROM user", null);
+        return c.moveToFirst() ? c.getInt(0) : null;
     }
 }

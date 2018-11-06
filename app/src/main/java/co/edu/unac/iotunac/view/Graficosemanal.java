@@ -37,7 +37,7 @@ public class Graficosemanal extends AppCompatActivity {
 
         //creamos una lista para los valores X
         ArrayList<String> valsX = new ArrayList<String>();
-        valsX.add("Cantidad de Acrividad");
+        valsX.add("Cantidad de Actividad");
         valsX.add("Cantidad de Descanso");
 
         //creamos una lista de colores

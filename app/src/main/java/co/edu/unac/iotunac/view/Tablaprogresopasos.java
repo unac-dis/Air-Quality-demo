@@ -67,14 +67,16 @@ public class Tablaprogresopasos extends AppCompatActivity {
             dates = getList(mDate1, mDate2);
 
             barEntries = new ArrayList<>();
+
             float max = 0f;
             float value = 0f;
+            int valuey=0;
             pasos = baseDatos.getLogroByDate(Calendar.getInstance().getTime()).getPasoslogrados();
             max = baseDatos.findUser().getNumpasos();
             for (int j = 0; j < dates.size(); j++) {
-                value = ((int) pasos) * max;
-                int redondeo = Math.round(value);
-                barEntries.add(new BarEntry(redondeo, j));
+                value = ((int) pasos);
+                valuey = (int) max;
+                barEntries.add(new BarEntry(value, 1,valuey));
             }
         } catch (ParseException e) {
             e.printStackTrace();

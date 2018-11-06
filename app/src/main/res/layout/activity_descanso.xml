@@ -31,6 +31,7 @@
         android:text="@string/pausar" />
 
     <Button
+        android:id="@+id/despertar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_despertar_icon"

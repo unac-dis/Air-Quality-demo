@@ -14,14 +14,22 @@ import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.objects.User;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
-import co.edu.unac.iotunac.view.Navigationdrawer;
+import co.edu.unac.iotunac.view.ImcActivity;
 
-public class CalcularIMC extends AppCompatActivity {
+public class RegistryTask extends AppCompatActivity {
 
     EditText editAge, editHeight, editWeight, editpasos, editsleep;
     Button button3;
-    Double fin, imc;
+    static Double fin, imc;
     String email;
+    DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
+    public static Double getFin() {
+        return fin;
+    }
+
+    public static void setFin(Double fin) {
+        RegistryTask.fin = fin;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,18 +77,9 @@ public class CalcularIMC extends AppCompatActivity {
     }
 
     public void dialog() {
-        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(CalcularIMC.this);
-        dialogo1.setView(R.layout.imc);
-        dialogo1.setCancelable(false);
-        dialogo1.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogo1, int id) {
-                Intent intent = new Intent(getApplicationContext(), Navigationdrawer.class);
+                Intent intent = new Intent(getApplicationContext(), ImcActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-            }
-        });
-        dialogo1.setMessage("Su IMC es: " + fin);
-        dialogo1.show();
     }
 
     public void registrar() {
@@ -98,8 +97,6 @@ public class CalcularIMC extends AppCompatActivity {
 
         try {
             String resul = task.execute(userRegistry).get();
-
-            DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
             baseDatos.insertUser(userRegistry);
             dialog();
         } catch (Exception e) {

@@ -9,12 +9,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_logounac_icon"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".view.Splashscreenapp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,28 +21,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".auth.SingInActivity"/>
-        <activity android:name=".actividades.Podometro"/>
+        <activity android:name=".auth.SingInActivity" />
+        <activity android:name=".actividades.Podometro" />
         <activity android:name=".view.Graficosemanal" />
         <activity android:name=".actividades.Descanso" />
         <activity android:name=".view.Graficomensual" />
         <activity android:name=".view.Graficodiario" />
         <activity android:name=".view.Estadodelclima" />
-        <activity android:name=".view.Tablaprogresopasos"/>
-
+        <activity android:name=".view.Tablaprogresopasos" />
         <activity
             android:name=".view.Navigationdrawer"
             android:label="@string/title_activity_navigationdrawer"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.TestActivity"
             android:label="Air Quality"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".task.CalcularIMC"
-            android:label="Información"/>
+        <activity
+            android:name=".task.RegistryTask"
+            android:label="Información" />
 
         <service android:name=".notifications.MyFirebaseMessagingService">
             <intent-filter>
@@ -51,5 +47,7 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".view.ImcActivity"></activity>
     </application>
+
 </manifest>

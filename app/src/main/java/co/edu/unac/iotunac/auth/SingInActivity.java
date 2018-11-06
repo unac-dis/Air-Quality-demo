@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.task.CalcularIMC;
+import co.edu.unac.iotunac.task.RegistryTask;
 
 /*** Created by Kevin Ortiz on 25/09/2018.*/
 
@@ -106,14 +106,13 @@ public class SingInActivity extends BaseActivity implements View.OnClickListener
                             txtNames = user.getDisplayName();
                             imageViews = user.getPhotoUrl();
                             updateUI(user);
-                            final CharSequence myList[] = {"Autorizar"};
                             AlertDialog.Builder dialogo1 = new AlertDialog.Builder(SingInActivity.this);
                             dialogo1.setView(R.layout.acuerdo);
                             dialogo1.setTitle("¡Un momento!");
                             dialogo1.setCancelable(false);
                             dialogo1.setPositiveButton("Ingresar", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialogo1, int id) {
-                                    Intent intent = new Intent(SingInActivity.this, CalcularIMC.class);
+                                    Intent intent = new Intent(SingInActivity.this, RegistryTask.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                 }
