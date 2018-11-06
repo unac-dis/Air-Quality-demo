@@ -7,12 +7,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
-import co.edu.unac.iotunac.objects.User;
-import co.edu.unac.iotunac.task.RegistryTask;
 
 
 public class ImcActivity extends AppCompatActivity {
@@ -40,8 +37,6 @@ ImageButton continuar;
                 startActivity(intent);
             }
         });
-
-
     }
 
     public void setInfo() {

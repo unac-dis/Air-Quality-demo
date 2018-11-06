@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,7 +18,9 @@ import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_EDAD;
 import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_EMAIL;
 import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_ESTATURA;
 import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_HORAS;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_IMAGE;
 import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_IMC;
+import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_NAME;
 import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_PASOS;
 import static co.edu.unac.iotunac.localdb.DBContract.User.COLUMN_PESO;
 import static co.edu.unac.iotunac.localdb.DBContract.User.TABLE_NAME;
@@ -59,6 +62,8 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
             contentValues.put(COLUMN_ESTATURA, user.getEstatura());
             contentValues.put(COLUMN_PESO, user.getPeso());
             contentValues.put(COLUMN_IMC, user.getImc());
+            contentValues.put(COLUMN_NAME, user.getName());
+            contentValues.put(COLUMN_IMAGE, String.valueOf(user.getImage()));
             contentValues.put(COLUMN_PASOS, user.getNumpasos());
             contentValues.put(COLUMN_HORAS, user.getHorassueño());
             contentValues.put(COLUMN_EDAD, user.getEdad());
@@ -127,6 +132,21 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT imc FROM user", null);
         return c.moveToFirst() ? c.getDouble(0) : null;
+    }
+    public String getUserByImage() {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT image FROM user", null);
+        return c.moveToFirst() ? c.getString(0) : null;
+    }
+    public String getUserByName() {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT name FROM user", null);
+        return c.moveToFirst() ? c.getString(0) : null;
+    }
+    public String getUserByEmail() {
+        db = this.getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT email FROM user", null);
+        return c.moveToFirst() ? c.getString(0) : null;
     }
     public int getUserbylogros() {
         db = this.getReadableDatabase();

@@ -2,6 +2,8 @@ package co.edu.unac.iotunac.task;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.net.URI;
 
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.objects.User;
@@ -21,7 +25,8 @@ public class RegistryTask extends AppCompatActivity {
     EditText editAge, editHeight, editWeight, editpasos, editsleep;
     Button button3;
     static Double fin, imc;
-    String email;
+    String email,name;
+    Uri image;
     DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
     public static Double getFin() {
         return fin;
@@ -85,6 +90,8 @@ public class RegistryTask extends AppCompatActivity {
     public void registrar() {
 
         email = SingInActivity.getTxtEmails();
+        name = SingInActivity.getTxtNames();
+        image = SingInActivity.getImageViews();
         TaskRegistro task = new TaskRegistro();
         User userRegistry = new User();
         userRegistry.setCorreo(email);
@@ -97,7 +104,17 @@ public class RegistryTask extends AppCompatActivity {
 
         try {
             String resul = task.execute(userRegistry).get();
-            baseDatos.insertUser(userRegistry);
+            User user = new User();
+            user.setCorreo(email);
+            user.setEstatura(Double.valueOf(editHeight.getText().toString()));
+            user.setPeso(Double.valueOf(editWeight.getText().toString()));
+            user.setEdad(Integer.parseInt(editAge.getText().toString()));
+            user.setHorassueño(Integer.parseInt(editsleep.getText().toString()));
+            user.setNumpasos(Integer.parseInt(editpasos.getText().toString()));
+            user.setImc(fin);
+            user.setName(name);
+            user.setImage(image);
+            baseDatos.insertUser(user);
             dialog();
         } catch (Exception e) {
             e.printStackTrace();

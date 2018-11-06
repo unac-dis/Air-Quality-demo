@@ -13,6 +13,8 @@ public class DBContract {
         public static final String TABLE_NAME = "user";
 
         public static final String COLUMN_EMAIL = "email";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_IMAGE = "image";
         public static final String COLUMN_ESTATURA = "estatura";
         public static final String COLUMN_PESO = "peso";
         public static final String COLUMN_IMC = "imc";
@@ -24,6 +26,8 @@ public class DBContract {
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_EMAIL + " TEXT, " +
+                COLUMN_NAME + " TEXT, " +
+                COLUMN_IMAGE + " TEXT, " +
                 COLUMN_IMC + " DOUBLE, " +
                 COLUMN_ESTATURA + " DOUBLE, " +
                 COLUMN_PESO + " DOUBLE, " +

@@ -1,5 +1,7 @@
 package co.edu.unac.iotunac.objects;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 /*** Created by Kevin Ortiz on 15/08/2018.*/
@@ -14,6 +16,15 @@ public class User implements Serializable{
     int numpasos;
     double imc;
     String name;
+    Uri image;
+
+    public Uri getImage() {
+        return image;
+    }
+
+    public void setImage(Uri image) {
+        this.image = image;
+    }
 
     public String getName() {
         return name;

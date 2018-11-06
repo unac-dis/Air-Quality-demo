@@ -22,6 +22,7 @@ import co.edu.unac.iotunac.actividades.Descanso;
 import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
+import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 import co.edu.unac.iotunac.task.AirQualityTask;
 import co.edu.unac.iotunac.objects.AirStatus;
 
@@ -71,15 +72,15 @@ public class Navigationdrawer extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        DBSQLiteHelper baseDatos = new DBSQLiteHelper(getApplicationContext());
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         txtName = navigationView.getHeaderView(0).findViewById(R.id.nombreuser);
         txtEmail = navigationView.getHeaderView(0).findViewById(R.id.usuarioemail);
         imageView = navigationView.getHeaderView(0).findViewById(R.id.imageprofile);
-        String personName = SingInActivity.getTxtNames();
-        Uri personPhotoUrl = SingInActivity.getImageViews();
-        String email = SingInActivity.getTxtEmails();
+        String personName = baseDatos.getUserByName();
+        Uri personPhotoUrl = Uri.parse(baseDatos.getUserByImage());
+        String email = baseDatos.getUserByEmail();
         txtName.setText(personName);
         txtEmail.setText(email);
         Picasso.with(this).load(personPhotoUrl).into(imageView);
