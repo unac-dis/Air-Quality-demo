@@ -39,10 +39,10 @@ public class Graficodiario extends AppCompatActivity {
         //creamos una lista para los valores Y
         //User user = baseDatos.findUser();
         //Logro logro = baseDatos.getLogroByDate(Calendar.getInstance().getTime());
-        int logro = baseDatos.getUserbylogros();
+        int logro = baseDatos.getLogroByDate(Calendar.getInstance().getTime()).getPasoslogrados();
         ArrayList<Entry> valsY = new ArrayList<Entry>();
         valsY.add(new Entry(logro *100/25,0));
-        valsY.add(new Entry(baseDatos.getUserBypasos() *100/25,1));
+        valsY.add(new Entry(baseDatos.findUser().getNumpasos() *100/25,1));
 
         //creamos una lista para los valores X
         ArrayList<String> valsX = new ArrayList<String>();

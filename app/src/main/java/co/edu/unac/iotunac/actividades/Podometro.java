@@ -128,7 +128,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             public void onClick(View v) {
                 new AlertDialog.Builder(Podometro.this)
                         .setIcon(R.drawable.ic_informacion_icon)
-                        .setTitle("Status")
+                        .setTitle("Info")
                         .setMessage(R.string.rojo)
                         .setCancelable(false)
                         .setPositiveButton("Cerrar", null)
@@ -140,7 +140,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             public void onClick(View v) {
                 new AlertDialog.Builder(Podometro.this)
                         .setIcon(R.drawable.ic_informacion_icon)
-                        .setTitle("Status")
+                        .setTitle("Info")
                         .setMessage(R.string.amarillo)
                         .setCancelable(false)
                         .setPositiveButton("Cerrar", null)
@@ -189,7 +189,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         Logro logro = new Logro();
         logro.setFecha(Calendar.getInstance().getTime());
         logro.setPasoslogrados(numSteps);
-        logro.setHoraslogradas(0);
+        logro.setHoraslogradas(0.0);
         baseDatos.insertLogro(logro);
     }
 }

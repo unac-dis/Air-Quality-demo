@@ -51,6 +51,6 @@ public class DBContract {
                 _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_DATE + " TEXT, " +
                 COLUMN_PASOSL + " INTEGER, " +
-                COLUMN_HORASL + " INTEGER" + ")";
+                COLUMN_HORASL + " DOUBLE" + ")";
     }
 }

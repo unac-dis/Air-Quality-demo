@@ -5,12 +5,12 @@ import java.util.Date;
 public class Logro {
     Date fecha;
     int pasoslogrados;
-    int horaslogradas;
+    Double horaslogradas;
 
     public Logro() {
     }
 
-    public Logro(Date fecha, int pasoslogrados, int horaslogradas) {
+    public Logro(Date fecha, int pasoslogrados, Double horaslogradas) {
         this.fecha = fecha;
         this.pasoslogrados = pasoslogrados;
         this.horaslogradas = horaslogradas;
@@ -32,11 +32,11 @@ public class Logro {
         this.pasoslogrados = pasoslogrados;
     }
 
-    public int getHoraslogradas() {
+    public Double getHoraslogradas() {
         return horaslogradas;
     }
 
-    public void setHoraslogradas(int horaslogradas) {
+    public void setHoraslogradas(Double horaslogradas) {
         this.horaslogradas = horaslogradas;
     }
 }

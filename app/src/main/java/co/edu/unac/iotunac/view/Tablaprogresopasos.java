@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import co.edu.unac.iotunac.R;
+import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 
 public class Tablaprogresopasos extends AppCompatActivity {
@@ -70,19 +71,19 @@ public class Tablaprogresopasos extends AppCompatActivity {
 
             float max = 0f;
             float value = 0f;
-            int valuey=0;
-            pasos = baseDatos.getLogroByDate(Calendar.getInstance().getTime()).getPasoslogrados();
+
+            pasos = Podometro.getNumSteps();
             max = baseDatos.findUser().getNumpasos();
-            for (int j = 0; j < dates.size(); j++) {
-                value = ((int) pasos);
-                valuey = (int) max;
-                barEntries.add(new BarEntry(value, 1,valuey));
-            }
+
+
+            barEntries.add(new BarEntry(pasos, 2));
+            barEntries.add(new BarEntry(max, 1));
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        BarDataSet barDataSet = new BarDataSet(barEntries, "Fechas");
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Meta");
         barDataSet.setColor(Color.GREEN);
         BarData barData = new BarData(dates, barDataSet);
         barData.setValueTextSize(15);

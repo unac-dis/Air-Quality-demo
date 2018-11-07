@@ -41,7 +41,7 @@ ImageButton continuar;
 
     public void setInfo() {
         DBSQLiteHelper baseDatos = new DBSQLiteHelper(getApplicationContext());
-        Double imc = baseDatos.getUserByImc();
+        Double imc = baseDatos.findUser().getImc();
         if (imc<18.5){
             info.setText("Su indice de masa corporal es: "+imc+" que indica que estás bajo de peso");
             descripcion.setImageResource(R.drawable.pesobajo);

@@ -23,6 +23,7 @@ import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.auth.SingInActivity;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
+import co.edu.unac.iotunac.objects.User;
 import co.edu.unac.iotunac.task.AirQualityTask;
 import co.edu.unac.iotunac.objects.AirStatus;
 
@@ -78,13 +79,11 @@ public class Navigationdrawer extends AppCompatActivity
         txtName = navigationView.getHeaderView(0).findViewById(R.id.nombreuser);
         txtEmail = navigationView.getHeaderView(0).findViewById(R.id.usuarioemail);
         imageView = navigationView.getHeaderView(0).findViewById(R.id.imageprofile);
-        String personName = baseDatos.getUserByName();
-        Uri personPhotoUrl = Uri.parse(baseDatos.getUserByImage());
-        String email = baseDatos.getUserByEmail();
-        txtName.setText(personName);
-        txtEmail.setText(email);
+        User user = baseDatos.findUser();
+        Uri personPhotoUrl = user.getImage();
+        txtName.setText(user.getName());
+        txtEmail.setText(user.getCorreo());
         Picasso.with(this).load(personPhotoUrl).into(imageView);
-
     }
 
     @Override

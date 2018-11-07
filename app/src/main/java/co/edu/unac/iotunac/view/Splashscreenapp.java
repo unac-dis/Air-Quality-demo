@@ -9,8 +9,12 @@ import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
+import java.util.Calendar;
+
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
+import co.edu.unac.iotunac.objects.Logro;
+import co.edu.unac.iotunac.objects.User;
 
 /**
  * Created by Brayan Torres on 25/08/2018.
@@ -55,6 +59,11 @@ public class Splashscreenapp extends AwesomeSplash {
 
     private boolean userAlreadyExist() {
         DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
+        Logro logro = baseDatos.getLogroByDate(Calendar.getInstance().getTime());
+        System.out.println("*********************************");
+        System.out.println(logro.getFecha());
+        System.out.println(logro.getHoraslogradas());
+        System.out.println(logro.getPasoslogrados());
         return baseDatos.findUser().getCorreo() != null;
     }
 }

@@ -83,7 +83,7 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
             contentValues.put(COLUMN_DATE, sdf.format(logro.getFecha()));
             contentValues.put(COLUMN_PASOSL, logro.getPasoslogrados());
             contentValues.put(COLUMN_HORASL, logro.getHoraslogradas());
-            long id = db.insert(TABLE_NAME, null, contentValues);
+            long id = db.insert(DBContract.Logro.TABLE_NAME, null, contentValues);
             db.close();
             return true;
         } catch (Exception e) {
@@ -94,20 +94,21 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
 
     public User findUser() {
         db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT email, edad, peso, estatura, horas, pasos, imc FROM user", null);
+        Cursor c = db.rawQuery("SELECT email, edad, peso, estatura, horas, pasos, imc, name, image FROM user", null);
         return c.moveToFirst() ? buildUser(c) : new User();
     }
 
     private User buildUser(Cursor c) {
         User user = new User();
-       // int i = 0;
         user.setCorreo(c.getString(0));
         user.setEdad(c.getInt(1));
         user.setPeso(c.getDouble(2));
         user.setEstatura(c.getDouble(3));
         user.setHorassueño(c.getInt(4));
         user.setNumpasos(c.getInt(5));
-        user.setNumpasos(c.getInt(6));
+        user.setImc(c.getInt(6));
+        user.setName(c.getString(7));
+        user.setImage(Uri.parse(c.getString(8)));
         return user;
     }
 
@@ -118,7 +119,7 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
     }
 
     private Logro buildLogro(Cursor c) {
-        return new Logro(getDate(c.getString(0)), c.getInt(1), c.getInt(2));
+        return new Logro(getDate(c.getString(0)), c.getInt(1), c.getDouble(2));
     }
 
     private Date getDate(String date) {
@@ -127,35 +128,5 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             return Calendar.getInstance().getTime();
         }
-    }
-    public Double getUserByImc() {
-        db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT imc FROM user", null);
-        return c.moveToFirst() ? c.getDouble(0) : null;
-    }
-    public String getUserByImage() {
-        db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT image FROM user", null);
-        return c.moveToFirst() ? c.getString(0) : null;
-    }
-    public String getUserByName() {
-        db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT name FROM user", null);
-        return c.moveToFirst() ? c.getString(0) : null;
-    }
-    public String getUserByEmail() {
-        db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT email FROM user", null);
-        return c.moveToFirst() ? c.getString(0) : null;
-    }
-    public int getUserbylogros() {
-        db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT sum(pasoslogrados) FROM logro", null);
-        return c.moveToFirst() ? c.getInt(0) : null;
-    }
-    public int getUserBypasos() {
-        db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT pasos FROM user", null);
-        return c.moveToFirst() ? c.getInt(0) : null;
     }
 }
