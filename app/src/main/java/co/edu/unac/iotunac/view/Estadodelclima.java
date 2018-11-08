@@ -1,5 +1,6 @@
 package co.edu.unac.iotunac.view;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
@@ -22,7 +23,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import co.edu.unac.iotunac.R;
-import co.edu.unac.iotunac.task.TaskTemperature;
+
+import static co.edu.unac.iotunac.task.TaskTemperature.*;
 
 public class Estadodelclima extends AppCompatActivity {
 
@@ -85,7 +87,7 @@ public class Estadodelclima extends AppCompatActivity {
     }
 
     public void taskLoadUp(String query) {
-        if (TaskTemperature.isNetworkAvailable(getApplicationContext())) {
+        if (isNetworkAvailable(getApplicationContext())) {
             DownloadWeather task = new DownloadWeather();
             task.execute(query);
         } else {
@@ -93,6 +95,7 @@ public class Estadodelclima extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     class DownloadWeather extends AsyncTask< String, Void, String > {
 
         @Override
@@ -103,34 +106,33 @@ public class Estadodelclima extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... args) {
-            String xml = TaskTemperature.executeGet("http://api.openweathermap.org/data/2.5/weather?q=" + args[0] +
+            String xml = executeGet("http://api.openweathermap.org/data/2.5/weather?q=" + args[0] +
                     "&units=metric&appid=" + OPEN_WEATHER_MAP_API);
             return xml;
         }
 
+        @SuppressLint({"SetTextI18n", "DefaultLocale"})
         @Override
         protected void onPostExecute(String xml) {
 
             try {
                 JSONObject json = new JSONObject(xml);
-                if (json != null) {
-                    JSONObject details = json.getJSONArray("weather").getJSONObject(0);
-                    JSONObject main = json.getJSONObject("main");
-                    DateFormat df = DateFormat.getDateTimeInstance();
+                JSONObject details = json.getJSONArray("weather").getJSONObject(0);
+                JSONObject main = json.getJSONObject("main");
+                DateFormat df = DateFormat.getDateTimeInstance();
 
-                    cityField.setText(json.getString("name").toUpperCase(Locale.US) + ", " + json.getJSONObject("sys").getString("country"));
-                    detailsField.setText(details.getString("description").toUpperCase(Locale.US));
-                    currentTemperatureField.setText(String.format("%.2f", main.getDouble("temp")) + "°");
-                    humidity_field.setText("Humidity: " + main.getString("humidity") + "%");
-                    pressure_field.setText("Pressure: " + main.getString("pressure") + " hPa");
-                    updatedField.setText(df.format(new Date(json.getLong("dt") * 1000)));
-                    weatherIcon.setText(Html.fromHtml(TaskTemperature.setWeatherIcon(details.getInt("id"),
-                            json.getJSONObject("sys").getLong("sunrise") * 1000,
-                            json.getJSONObject("sys").getLong("sunset") * 1000)));
+                cityField.setText(json.getString("name").toUpperCase(Locale.US) + ", " + json.getJSONObject("sys").getString("country"));
+                detailsField.setText(details.getString("description").toUpperCase(Locale.US));
+                currentTemperatureField.setText(String.format("%.2f", main.getDouble("temp")) + "°");
+                humidity_field.setText("Humedad: " + main.getString("humidity") + "%");
+                pressure_field.setText("Presión atmosférica: " + main.getString("pressure") + " hPa");
+                updatedField.setText(df.format(new Date(json.getLong("dt") * 1000)));
+                weatherIcon.setText(Html.fromHtml(setWeatherIcon(details.getInt("id"),
+                        json.getJSONObject("sys").getLong("sunrise") * 1000,
+                        json.getJSONObject("sys").getLong("sunset") * 1000)));
 
-                    loader.setVisibility(View.GONE);
+                loader.setVisibility(View.GONE);
 
-                }
             } catch (JSONException e) {
                 Toast.makeText(getApplicationContext(), "Error, al buscar Ciudad", Toast.LENGTH_SHORT).show();
             }

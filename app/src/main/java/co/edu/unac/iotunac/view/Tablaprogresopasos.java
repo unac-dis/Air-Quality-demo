@@ -11,12 +11,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.actividades.Podometro;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
@@ -24,7 +19,7 @@ import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
 public class Tablaprogresopasos extends AppCompatActivity {
 
     BarChart barChart;
-    ArrayList<String> dates;
+    ArrayList<String> steps;
     int pasos;
     ArrayList<BarEntry> barEntries;
     TextView textView;
@@ -39,79 +34,43 @@ public class Tablaprogresopasos extends AppCompatActivity {
         barChart.setBackgroundColor(Color.LTGRAY);
         barChart.setGridBackgroundColor(Color.LTGRAY);
         barChart.animateY(2500);
-        barChart.invalidate();
+
 
         YAxis yAxis = barChart.getAxisRight();
         yAxis.setEnabled(false);
 
-        createRandomBarGraph("2018/11/04", "2018/11/07");
+        createRandomBarGraph();
     }
 
-    public void createRandomBarGraph(String Date1, String Date2) {
+    public void createRandomBarGraph() {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
         DBSQLiteHelper baseDatos = new DBSQLiteHelper(this);
 
         try {
-            Date date1 = simpleDateFormat.parse(Date1);
-            Date date2 = simpleDateFormat.parse(Date2);
+            int Meta= baseDatos.findUser().getNumpasos();
+            pasos = Podometro.getNumSteps();
 
-            Calendar mDate1 = Calendar.getInstance();
-            Calendar mDate2 = Calendar.getInstance();
-            mDate1.clear();
-            mDate2.clear();
 
-            mDate1.setTime(date1);
-            mDate2.setTime(date2);
-
-            dates = new ArrayList<>();
-            dates = getList(mDate1, mDate2);
+            steps = new ArrayList<>();
+            steps.add("Meta");
+            steps.add("Logro");
 
             barEntries = new ArrayList<>();
-
-            float max = 0f;
-            float value = 0f;
-
-            pasos = Podometro.getNumSteps();
-            max = baseDatos.findUser().getNumpasos();
+            barEntries.add(new BarEntry(pasos, 1));
+            barEntries.add(new BarEntry(Meta, 0));
 
 
-            barEntries.add(new BarEntry(pasos, 2));
-            barEntries.add(new BarEntry(max, 1));
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
         BarDataSet barDataSet = new BarDataSet(barEntries, "Meta");
-        barDataSet.setColor(Color.GREEN);
-        BarData barData = new BarData(dates, barDataSet);
+        barDataSet.setColor(Color.BLUE);
+        BarData barData = new BarData(steps, barDataSet);
         barData.setValueTextSize(15);
         barChart.setData(barData);
-        barChart.setDescription("Gráfico de Pasos");
-        barChart.setDescriptionPosition(1030, 1045);
-        barChart.setDescriptionTextSize(15);
-
+        barChart.setDescriptionPosition(1030, 1000);
     }
 
-    public ArrayList<String> getList(Calendar startDate, Calendar endDate) {
-        ArrayList<String> list = new ArrayList<String>();
-        while (startDate.compareTo(endDate) <= 0) {
-            list.add(getDate(startDate));
-            startDate.add(Calendar.DAY_OF_MONTH, 1);
-        }
-        return list;
-    }
 
-    public String getDate(Calendar cld) {
-        String curDate = cld.get(Calendar.YEAR) + "/" + (cld.get(Calendar.MONTH) + 1) + "/"
-                + cld.get(Calendar.DAY_OF_MONTH);
-        try {
-            Date date = new SimpleDateFormat("yyyy/MM/dd").parse(curDate);
-            curDate = new SimpleDateFormat("yyy/MM/dd").format(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return curDate;
-    }
 }

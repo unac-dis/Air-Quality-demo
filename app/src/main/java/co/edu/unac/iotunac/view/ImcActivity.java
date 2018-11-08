@@ -1,5 +1,6 @@
 package co.edu.unac.iotunac.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,13 +33,13 @@ ImageButton continuar;
         continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Navigationdrawer.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(ImcActivity.this, Navigationdrawer.class);
                 startActivity(intent);
             }
         });
     }
 
+    @SuppressLint("SetTextI18n")
     public void setInfo() {
         DBSQLiteHelper baseDatos = new DBSQLiteHelper(getApplicationContext());
         Double imc = baseDatos.findUser().getImc();

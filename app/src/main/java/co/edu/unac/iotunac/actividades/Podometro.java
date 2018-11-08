@@ -1,5 +1,6 @@
 package co.edu.unac.iotunac.actividades;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -25,19 +26,18 @@ import co.edu.unac.iotunac.view.Tablaprogresopasos;
 public class Podometro extends AppCompatActivity implements SensorEventListener, StepListener {
 
     private static final String TEXT_NUM_STEPS = ": Pasos";
-    static int numSteps;
+   static int numSteps;
     static double calorias;
-    private TextView TvSteps;
-    private TextView Tvcalorias;
-    private StepDetector simpleStepDetector;
-    private SensorManager sensorManager;
-    private android.hardware.Sensor accel;
-    private Button BtnStart;
-    private Button BtnStop;
-    private Button BtnReiniciar;
-    private Button Btnrojo;
-    private Button Btnamarillo;
-    private Button Btnverde;
+     TextView TvSteps;
+     TextView Tvcalorias;
+     StepDetector simpleStepDetector;
+     SensorManager sensorManager;
+     android.hardware.Sensor accel;
+     Button BtnStart;
+     Button BtnReiniciar;
+     Button Btnrojo;
+     Button Btnamarillo;
+     Button Btnverde;
 
     public static int getNumSteps() {
         return numSteps;
@@ -47,6 +47,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         Podometro.numSteps = numSteps;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +69,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
 
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        assert sensorManager != null;
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         simpleStepDetector = new StepDetector();
         simpleStepDetector.registerListener(this);
@@ -75,7 +77,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
         TvSteps = findViewById(R.id.tv_steps);
         Tvcalorias = findViewById(R.id.tv_calorias);
         BtnStart = findViewById(R.id.btn_start);
-        BtnStop = findViewById(R.id.btn_stop);
+        Button btnStop = findViewById(R.id.btn_stop);
         BtnReiniciar = findViewById(R.id.btn_reiniciar);
         Btnrojo = findViewById(R.id.btn_rojo);
         Btnamarillo = findViewById(R.id.btn_amarillo);
@@ -103,7 +105,7 @@ public class Podometro extends AppCompatActivity implements SensorEventListener,
             }
         });
 
-        BtnStop.setOnClickListener(new View.OnClickListener() {
+        btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sensorManager.unregisterListener(Podometro.this);

@@ -14,8 +14,6 @@ import java.util.Calendar;
 
 import co.edu.unac.iotunac.R;
 import co.edu.unac.iotunac.localdb.DBSQLiteHelper;
-import co.edu.unac.iotunac.objects.Logro;
-import co.edu.unac.iotunac.objects.User;
 
 public class Graficodiario extends AppCompatActivity {
 
@@ -32,25 +30,21 @@ public class Graficodiario extends AppCompatActivity {
         pieChart.setHoleRadius(40f);
         pieChart.setRotationEnabled(true);
         pieChart.animateXY(1500,1500);
-        pieChart.setDescription("Éste es su progreso " +
-                "Cada día.");
+        pieChart.setDescription("Éste es su progreso por día.");
         pieChart.setDescriptionTextSize(20f);
 
-        //creamos una lista para los valores Y
-        //User user = baseDatos.findUser();
-        //Logro logro = baseDatos.getLogroByDate(Calendar.getInstance().getTime());
         int logro = baseDatos.getLogroByDate(Calendar.getInstance().getTime()).getPasoslogrados();
-        ArrayList<Entry> valsY = new ArrayList<Entry>();
-        valsY.add(new Entry(logro *100/25,0));
-        valsY.add(new Entry(baseDatos.findUser().getNumpasos() *100/25,1));
+        ArrayList<Entry> valsY = new ArrayList<>();
+        valsY.add(new Entry(logro,0));
+        valsY.add(new Entry(baseDatos.findUser().getNumpasos(),1));
 
         //creamos una lista para los valores X
-        ArrayList<String> valsX = new ArrayList<String>();
+        ArrayList<String> valsX = new ArrayList<>();
         valsX.add("Pasos logrados");
         valsX.add("Meta");
 
         //creamos una lista de colores
-        ArrayList<Integer> colors = new ArrayList<Integer>();
+        ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.GREEN);
         colors.add(Color.RED);
 

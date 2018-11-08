@@ -83,7 +83,7 @@ public class DBSQLiteHelper extends SQLiteOpenHelper {
             contentValues.put(COLUMN_DATE, sdf.format(logro.getFecha()));
             contentValues.put(COLUMN_PASOSL, logro.getPasoslogrados());
             contentValues.put(COLUMN_HORASL, logro.getHoraslogradas());
-            long id = db.insert(DBContract.Logro.TABLE_NAME, null, contentValues);
+            long ids = db.insert(DBContract.Logro.TABLE_NAME, null, contentValues);
             db.close();
             return true;
         } catch (Exception e) {

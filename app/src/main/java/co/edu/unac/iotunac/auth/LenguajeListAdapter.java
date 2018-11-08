@@ -20,7 +20,7 @@ public class LenguajeListAdapter extends ArrayAdapter<String> {
 
     private final Activity context;
     private final String[] itemname;
-    public static int MILISEGUNDOS_ESPERA = 500;
+    private int MILISEGUNDOS_ESPERA = 500;
 
     public LenguajeListAdapter(Activity context, String[] itemname) {
         super(context, R.layout.list_item, itemname);
@@ -32,9 +32,9 @@ public class LenguajeListAdapter extends ArrayAdapter<String> {
     public View getView(int posicion,View view, ViewGroup parent){
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.list_item,null,true);
-        final TextView txtTitle = (TextView) rowView.findViewById(R.id.pregunta);;
-        TextView si = (TextView) rowView.findViewById(R.id.si);
-        Switch no = (Switch) rowView.findViewById(R.id.no);
+        final TextView txtTitle =  rowView.findViewById(R.id.pregunta);;
+        TextView si = rowView.findViewById(R.id.si);
+        Switch no =  rowView.findViewById(R.id.no);
         txtTitle.setText(itemname[posicion]);
         no.setChecked(false);
         no.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -46,7 +46,7 @@ public class LenguajeListAdapter extends ArrayAdapter<String> {
         });
         return rowView;
     }
-    public void terminar(){
+     public void terminar(){
         AlertDialog.Builder aviso = new AlertDialog.Builder(getContext());
         aviso.setTitle("¡Lo sentimos!");
         aviso.setCancelable(false);

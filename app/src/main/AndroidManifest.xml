@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="co.edu.unac.iotunac">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -9,11 +10,12 @@
 
     <application
         android:allowBackup="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity android:name=".view.Splashscreenapp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,11 +25,19 @@
         </activity>
         <activity android:name=".auth.SingInActivity" />
         <activity android:name=".actividades.Podometro" />
-        <activity android:name=".view.Graficosemanal" />
+        <activity
+            android:name=".view.Graficosemanal"
+            android:label="Resumen Semanal" />
         <activity android:name=".actividades.Descanso" />
-        <activity android:name=".view.Graficomensual" />
-        <activity android:name=".view.Graficodiario" />
-        <activity android:name=".view.Estadodelclima" />
+        <activity
+            android:name=".view.Graficomensual"
+            android:label="Resumen Mensual" />
+        <activity
+            android:name=".view.Graficodiario"
+            android:label="Resumen Diario" />
+        <activity
+            android:name=".view.Estadodelclima"
+            android:label="Estado del Clima" />
         <activity android:name=".view.Tablaprogresopasos" />
         <activity
             android:name=".view.Navigationdrawer"
@@ -41,13 +51,14 @@
             android:name=".task.RegistryTask"
             android:label="Información" />
 
-        <service android:name=".notifications.MyFirebaseMessagingService">
+        <service android:name=".notifications.MyFirebaseMessagingService"
+            tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name=".view.ImcActivity"></activity>
+        <activity android:name=".view.ImcActivity" />
     </application>
 
 </manifest>

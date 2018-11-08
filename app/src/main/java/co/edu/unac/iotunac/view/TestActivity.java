@@ -51,9 +51,9 @@ public class TestActivity extends AppCompatActivity {
         });
         dialogo1.show();
         LenguajeListAdapter adapter = new LenguajeListAdapter(this, questions);
-        list = (ListView) findViewById(R.id.listView);
+        list = (findViewById(R.id.listView));
         list.setAdapter(adapter);
-        ok = (Button) findViewById(R.id.ok);
+        ok =  findViewById(R.id.ok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

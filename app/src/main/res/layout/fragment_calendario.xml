@@ -12,22 +12,20 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginStart="0dp"/>
+        android:layout_height="170dp"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/progreso"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calendario Personal"
         android:textColor="#FFF"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="22dp"
+        android:textSize="18dp"
         android:gravity="center"
         android:layout_marginTop="1dp"/>
 
     <LinearLayout
-        android:layout_marginTop="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -36,7 +34,7 @@
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></CalendarView>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

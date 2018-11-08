@@ -18,7 +18,7 @@ import co.edu.unac.iotunac.objects.Logro;
 
 public class Descanso extends AppCompatActivity {
 
-    double sueño;
+    double rest;
     double horasdormidas;
     Button despertar;
     String[] listItems;
@@ -33,7 +33,7 @@ public class Descanso extends AppCompatActivity {
         despertar = findViewById(R.id.despertar);
         chronometer = findViewById(R.id.chronometer);
         chronometer.setFormat("Tiempo de Sueño: %s");
-        sueño = 0;
+        rest = 0;
         despertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,15 +71,14 @@ public class Descanso extends AppCompatActivity {
 
     private void stopChronometer() {
         chronometer.stop();
-        sueño = SystemClock.elapsedRealtime() - chronometer.getBase();
-        System.out.println("Sueñoooo " + sueño);
+        rest = SystemClock.elapsedRealtime() - chronometer.getBase();
         pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
         running = false;
     }
 
     public void resetChronometer() {
         stopChronometer();
-        horasdormidas = sueño / 1000 / 3600;
+        horasdormidas = rest / 1000 / 3600;
         Toast.makeText(this, "dormiste " + horasdormidas + " horas", Toast.LENGTH_SHORT).show();
         insertLogroDescanso();
         chronometer.setBase(SystemClock.elapsedRealtime());

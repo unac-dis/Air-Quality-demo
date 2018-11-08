@@ -40,7 +40,7 @@
     <string name="nav_header_subtitle">airepuro@unac.edu.co</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="kevin">Kevin Hanmerly \n Ortiz Dimingo</string>
-    <string name="brayan">Brayan David \n Torres Suares</string>
+    <string name="brayan">Brayan David \n Torres Suarez</string>
     <string name="jhan">Jhan Kein \n Sierra</string>
     <string name="version">App Version 1.0 ® \n Desarrollada por:</string>
     <string name="christofer">Christopher \n Vargas Isaza</string>
@@ -49,7 +49,7 @@
     <string name="pausar">Pausar</string>
     <string name="despertar">Despertar</string>
 
-    <string name="informaciontablapasos">En el siguiente grafico se visualiza los pasos que da diariamente, de acuerdo a sus logro.</string>
+    <string name="informaciontablapasos">Tabla de comparación inmediata respecto a su meta.</string>
     <string name="titulograficopasos">GRÁFICO PASOS</string>
     <string-array name="descanso_item">
         <item>Bueno y agradable</item>
